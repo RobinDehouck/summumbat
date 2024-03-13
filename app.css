@@ -1,0 +1,80 @@
+.gradient {
+  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.background-image {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0) 50%
+    ),
+    url("public/landing-banner-2.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+  z-index: 1;
+}
+
+.image-overlay {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+.image-overlay > * {
+  position: relative;
+  z-index: 2;
+}
+
+.gradient-bg {
+    background: -webkit-linear-gradient(left, #dc2420, #dc2420);
+    font-weight: bold;
+    font-size: 2xl;
+    line-height: 1;
+    color: azure;
+  }
+  
+  /* The hover effect to maintain text color white on mouse over */
+  .gradient-title:hover, .gradient-title:focus {
+    text-decoration: none;
+  }
+
+/* For Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+  background: transparent; /* Make the scrollbar background transparent */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Make the track (progress background) transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* The scrolling handle */
+  border-radius: 4px; /* Rounded corners on the scrollbar handle */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color when hovering over the scrollbar handle */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #888 #f1f1f1; /* Scrollbar handle color, track color */
+}
