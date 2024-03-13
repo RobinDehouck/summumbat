@@ -1,4 +1,3 @@
-AOS.init();
 var scrollpos = window.scrollY;
 var header = document.getElementById("header");
 var navcontent = document.getElementById("nav-content");
@@ -115,3 +114,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+AOS.init();
