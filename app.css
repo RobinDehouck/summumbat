@@ -78,3 +78,75 @@
   scrollbar-width: thin; /* "auto" or "thin" */
   scrollbar-color: #888 #f1f1f1; /* Scrollbar handle color, track color */
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px; /* Adjust based on your needs */
+  width: 130px; /* Adjust based on your needs */
+  /* dashed border white */
+  /* border: 2px dashed white; */
+  /* #00aaff bg opacity 0.5 */
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px;
+}
+
+.cardPlus{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120px; /* Adjust based on your needs */
+  width: 120px; /* Adjust based on your needs */
+  border-radius: 2xl;
+  opacity: 0.9;
+}
+
+.card svg {
+  flex-shrink: 0; /* Prevents the SVG from resizing */
+  /* height: 50px;
+  width: 50px; */
+  margin-bottom: 0.5em; /* Adds some space between the SVG and the text */
+}
+
+.card p {
+  text-align: center;
+  color: white;
+  font-size: 16px; /* Adjust based on your needs */
+  line-height: 1.2; /* Ensures text fits in two lines */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Number of lines you want */
+  -webkit-box-orient: vertical;
+}
+
+.icon-row, .icons-row {
+  width: 100%; /* Ensures each row takes full width */
+  display: flex;
+  justify-content: center; /* Centers the icons horizontally */
+  margin-bottom: 20px; /* Adds space between the rows */
+}
+
+.icons-row {
+  flex-wrap: wrap; /* Allows icons to wrap in smaller screens */
+  justify-content: space-around; /* Distributes space around icons evenly */
+}
+
+/* not mobile */
+@media (min-width: 768px) {
+  .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content on the cross axis */
+    width: 100%; /* Takes full width of the parent */
+  }
+}
+
+.image-container {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}

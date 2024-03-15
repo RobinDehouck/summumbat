@@ -7,6 +7,8 @@
     <title>
       Panneau photovoltaïque, isolation, chauffage, couvreur
     </title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="app.css" />
     <meta name="description" content="Simple landind page" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
@@ -14,8 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script> 
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="app.css" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.10.4/dist/gsap.min.js"></script>
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
     <!--Nav-->
@@ -61,27 +62,58 @@
     <div class="pt-24 background-image h-screen">
       <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <!-- Left Col -->
-        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-          <h1 class="my-4 text-5xl font-bold leading-tight ">
-            Énergie renouvelable, 
-            <p class="text-5xl font-bold">Confort durable</p>
+        <div class="flex flex-col w-full md:w-3/5 justify-center items-start text-center md:text-left">
+          <h1 class="my-4 text-5xl font-bold leading-tight">
+            Transformez votre foyer, 
+            <p class="text-5xl font-bold">investissez dans l'avenir.</p>
           </h1>
           <p class="leading-normal text-2xl">
             Experts en rénovation énergétique : couverture, isolation, chauffage, et solaire.
             <p class="leading-normal text-2xl mb-8 hidden md:block">Transformez votre habitation en source d'économie.</p>
           </p>
-          <button 
-          onclick="call()"
-            class="text-white gradient-bg mx-auto lg:mx-0 hover:underline bg-white font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-80 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+          <button onclick="call()" class="text-white gradient-bg mx-auto lg:mx-0 hover:underline bg-white font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-80 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
             Prendre rendez-vous
           </button>
         </div>
         <!-- Right Col -->
-        <div class="w-full md:w-3/5 py-6 text-center">
-          <!-- <img class="w-full md:w-4/5 z-50" src="hero.png" /> -->
+        <div class="hidden lg:block icon-container w-full md:w-2/5 py-6 text-center flex justify-center md:justify-end">
+          <div class="icon-row">
+            <div class="solar-panel card flex flex-col items-center justify-center rounded-lg">
+              <img src="public/icons/solarpanel-icon.png" alt="Pompe à chaleur" class="h-20 w-20">
+              <p class="text-white">Photovoltaïque</p>
+            </div>
+          </div>
+        <div class="icon-row space-x-2">
+          <div class="heat-pump card flex flex-col items-center justify-center  rounded-lg">
+            <!-- img public/icons/heatpump.png -->
+            <img src="public/icons/heatpump-icon.png" alt="Pompe à chaleur" class="h-20 w-20">
+            <p class="text-white">Pompe à chaleur</p>
+          </div>
+            <div class="icon-plus border-dashed border-2 border-white cardPlus flex flex-col items-center justify-center rounded-lg">
+              <svg height="50px" width="50px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-circle</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.00032" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-464.000000, -1087.000000)" fill="#ffffff"> <path d="M480,1117 C472.268,1117 466,1110.73 466,1103 C466,1095.27 472.268,1089 480,1089 C487.732,1089 494,1095.27 494,1103 C494,1110.73 487.732,1117 480,1117 L480,1117 Z M480,1087 C471.163,1087 464,1094.16 464,1103 C464,1111.84 471.163,1119 480,1119 C488.837,1119 496,1111.84 496,1103 C496,1094.16 488.837,1087 480,1087 L480,1087 Z M486,1102 L481,1102 L481,1097 C481,1096.45 480.553,1096 480,1096 C479.447,1096 479,1096.45 479,1097 L479,1102 L474,1102 C473.447,1102 473,1102.45 473,1103 C473,1103.55 473.447,1104 474,1104 L479,1104 L479,1109 C479,1109.55 479.447,1110 480,1110 C480.553,1110 481,1109.55 481,1109 L481,1104 L486,1104 C486.553,1104 487,1103.55 487,1103 C487,1102.45 486.553,1102 486,1102 L486,1102 Z" id="plus-circle" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+            </div>
+          <div class="renovation card flex flex-col items-center justify-center  rounded-lg">
+            <!-- Your SVG here -->
+            <img src="public/icons/isolation-icon.png" alt="Pompe à chaleur" class="h-20 w-20">
+            <p class="text-white">Isolation</p>
+          </div>
+          </div> 
+          <div class="icon-row space-x-2">
+
+          <div class="ballon-eau-chaude card flex flex-col items-center justify-center opacity-90 rounded-lg">
+            <!-- Your SVG here -->
+            <img src="public/icons/hotwatertank-icon.png" alt="Pompe à chaleur" class="h-20 w-20">
+            <p class="text-white">Ballon d'eau chaude</p>
+          </div>
+          <div class="poele card flex flex-col items-center justify-center bg-opacity-50 opacity-90 rounded-lg">
+            <img src="public/icons/pellet-icon.png" alt="Pompe à chaleur" class="h-20 w-20">
+            <p class="text-white">Poêle à granulés</p>
+          </div>
+        </div>
         </div>
       </div>
     </div>
+    
     <div class="relative -mt-12 lg:-mt-24">
       <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -121,7 +153,7 @@
             </p>
           </div>
           <div class="w-full sm:w-1/2 p-6">
-            <img class="rounded-3xl sm:h-64 mx-auto" src="public/icon-2.webp" />
+            <img class="scroll-image rounded-3xl sm:h-64 mx-auto" src="public/icon-2.webp" />
           </div>
         </div>
         <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap flex-col-reverse sm:flex-row">
@@ -168,7 +200,7 @@
               <span class="text-white text-center px-4">Installation de panneaux solaires à la pointe de la technologie, pour promouvoir un avenir durable tout en faisant des économies.</span>
           </div>
         </div>
-        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 group" style="background-image: url('public/heatpump-bg.webp'); background-size: cover; background-position: center;">
+        <div class="image-overlay-ter w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 group" style="background-image: url('public/heatpump-bg.webp'); background-size: cover; background-position: center;">
           <div class="flex-grow"></div> <!-- Space -->
           <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
           <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
@@ -185,7 +217,7 @@
               <span class="text-white text-center px-4">Expertise en installation de pompes à chaleur pour améliorer l'efficacité énergétique et réduire les coûts de chauffage.</span>
           </div>
         </div>
-        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 group" style="background-image: url('public/pelletstove-bg.webp'); background-size: cover; background-position: center;">
+        <div class="image-overlay-bis w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 group" style="background-image: url('public/pelletstove-bg.webp'); background-size: cover; background-position: center;">
           <div class="flex-grow"></div> <!-- Space -->
           <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
           <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
@@ -202,7 +234,7 @@
               <span class="text-white text-center px-4">Fourniture et installation de poêles à granulés haut de gamme pour un chauffage domestique écologique et économique.</span>
           </div>
         </div>
-        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 md:rounded-tr-3xl group" style="background-image: url('public/hotwatertank-bg.webp'); background-size: cover; background-position: center;">
+        <div class="image-overlay-bis w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 md:rounded-tr-3xl group" style="background-image: url('public/hotwatertank-bg.webp'); background-size: cover; background-position: center;">
           <div class="flex-grow"></div> <!-- Space -->
           <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
           <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
@@ -243,7 +275,48 @@
       </div>
     </section>
     
-    
+    <section id="projets" class="bg-white border-b py-8">
+      <div data-aos="fade-right" data-aos-duration="1000"  class="container max-w-5xl mx-auto m-8">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Bibiliothèque de projets
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap">
+          <div class="w-5/6 sm:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+              Installation sur mesure
+            </h3>
+            <p class="text-gray-600 mb-8">
+              De la robustesse de nos toitures innovantes à l'efficience suprême de notre isolation et nos systèmes de chauffage et d'électricité de pointe, nous métamorphosons votre habitation en un sanctuaire de bien-être et d'économies.              <br />
+              <br />
+            </p>
+          </div>
+          <div class="w-full sm:w-1/2 p-6">
+            <img class="rounded-3xl sm:h-64 mx-auto" src="public/icon-2.webp" />
+          </div>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap flex-col-reverse sm:flex-row">
+          <div class="w-full sm:w-1/2 p-6">
+            <img class="rounded-3xl sm:h-64 mx-auto" src="public/landing-banner-4.webp" />
+          </div>
+          <div class="w-full sm:w-1/2 p-6 mt-6">
+            <div class="align-middle">
+              <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                Innovation et Durabilité
+              </h3>
+              <p class="text-gray-600 mb-8">
+                Nous sommes engagés dans la qualité et la durabilité. Summum Bat est synonyme d'innovation, offrant des installations solaires et des rénovations énergétiques personnalisées qui respectent l'environnement tout en valorisant votre propriété.
+                <br />
+                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
@@ -265,6 +338,7 @@
         </g>
       </g>
     </svg>
+    
     <section id="footer" class="container mx-auto text-center py-6 mb-12">
       <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
         Discutons de votre projet
