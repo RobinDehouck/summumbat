@@ -1,4 +1,3 @@
-AOS.init();
 var scrollpos = window.scrollY;
 var header = document.getElementById("header");
 var navcontent = document.getElementById("nav-content");
@@ -190,6 +189,14 @@ window.addEventListener('load', function() {
   img.onload = function() {
     document.getElementById('loader').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
+
+    // Initialize AOS or refresh AOS calculations here
+    AOS.init({
+      // Your AOS configurations
+      once: false,
+    });
+    // Alternatively, if AOS was already initialized earlier, just refresh it:
+    AOS.refresh();
   };
   img.src = 'landing-banner-2.webp';
 });
