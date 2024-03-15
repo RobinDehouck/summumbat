@@ -185,3 +185,12 @@ document.addEventListener("scroll", function() {
   });
 });
 
+window.addEventListener('load', function() {
+  // Preload the background image
+  var img = new Image();
+  img.onload = function() {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  };
+  img.src = 'landing-banner-2.webp';
+});
