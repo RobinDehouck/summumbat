@@ -12,7 +12,6 @@ document.addEventListener("scroll", function () {
 
   if (scrollpos > 10) {
     header.classList.add("bg-white");
-    header.classList.add("bg-opacity-95");
     navaction.classList.remove("bg-white");
     navaction.classList.remove("font-bold");
     navaction.classList.add("gradient-bg");
