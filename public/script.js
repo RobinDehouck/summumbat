@@ -77,7 +77,7 @@ function checkParent(t, elm) {
 
 function call() {
   if (window.innerWidth < 768) {
-    window.open("tel:12345");
+    window.open("tel:0788879157");
   }
   else {
     window.location.href = "#footer";

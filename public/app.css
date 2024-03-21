@@ -187,3 +187,110 @@
   background-position: center;
   height: 100%;
 }
+
+.flowcard-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: stretch; /* Stretch items to fill the container */
+  text-align: left; /* Align text to the left */
+}
+
+.flowcard {
+  background: linear-gradient(rgb(51, 51, 51) 42.77%, rgb(99, 124, 163) 101.39%), rgb(51, 51, 51);
+  color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.2s;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc(50% - 20px); /* Adjust for the gap, assuming two cards per row */
+  height: auto; /* Ensure cards can grow to fit content */
+}
+
+.flowcardsmall {
+  color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  transition: transform 0.2s;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-basis: calc(50% - 20px); /* Adjust for the gap, assuming two cards per row */
+  height: auto; /* Ensure cards can grow to fit content */
+}
+
+.flowcard-title{
+  color: rgba(241, 241, 244, 0.6);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.72px;
+}
+
+.flowcard-title-small{
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.72px;
+}
+
+/* flowcard p */
+.flowcard p {
+  color: rgb(241, 241, 244);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: -0.96px;
+  margin-bottom: 1.5rem;
+}
+
+.flowcard-large {
+  position: relative; /* Set position to relative for absolute positioning of children */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* Align items to the top */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: -webkit-linear-gradient(to right, #055e94, #3a86b4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #055e94, #3a86b4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-bottom: 0; /* Remove padding at the bottom */
+}
+
+
+.flowcard-large .content {
+  flex: 1; /* Allows content to fill available space */
+  padding-right: 20px; /* Adjust spacing between text and image */
+}
+
+
+.flowcard-large img {
+  position: absolute; /* Position the image absolutely within the card */
+  bottom: 0; /* Align the bottom of the image with the bottom of the card */
+  right: 0; /* Align the right of the image with the right of the card */
+  width: auto; /* Keep the image width automatic */
+  max-height: 100%; /* Ensure the image does not exceed the card's height */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  margin-bottom: 0; /* Remove margin at the bottom */
+  max-height: calc(100% - 20px)
+}
+
+/* If you want all cards to be the same height explicitly */
+.flowcard {
+  height: 300px; /* Example fixed height */
+}
+
+.flowcard-medium {
+  background: -webkit-linear-gradient(to bottom, #055e94, #3a86b4); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #055e94, #3a86b4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  flex-basis: calc(25% - 20px); /* Adjust for the gap */
+  height: 300px; /* Height should be auto to contain the content */
+}
+
+/* Add more CSS as required for styling text, buttons, etc. */
