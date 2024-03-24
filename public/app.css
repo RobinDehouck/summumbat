@@ -369,3 +369,22 @@
   font-size: 1.25rem;
   color: #4a5568; /* A shade of gray for readability */
 }
+
+.project-card {
+  width: calc(33.333% - 1rem); /* Subtract any horizontal padding/margins if necessary */
+  margin: 0.5rem; /* Adjust based on your layout needs */
+  display: inline-block; /* Keeps the block inline */
+  vertical-align: top; /* Aligns the top of the elements */
+}
+
+@media screen and (max-width: 1024px) {
+  .project-card {
+    width: calc(50% - 1rem); /* Adjust for smaller screens, two items per row */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .project-card {
+    width: calc(100% - 1rem); /* Adjust for mobile screens, one item per row */
+  }
+}
