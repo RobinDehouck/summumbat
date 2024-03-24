@@ -188,6 +188,19 @@
   height: 100%;
 }
 
+:root {
+  /* Define color and gradient variables for easy theme changes */
+  --dark-gray: rgb(51, 51, 51);
+  --light-gray-gradient-start: rgb(99, 124, 163);
+  --white-color: #fff;
+  --title-color: rgba(241, 241, 244, 0.6);
+  --title-color-small: rgba(0, 0, 0, 0.6);
+  --text-color: rgb(241, 241, 244);
+  --gradient-to-right-start: #055e94;
+  --gradient-to-right-end: #3a86b4;
+  --box-shadow-color: rgba(0, 0, 0, 0.2);
+}
+
 .flowcard-container {
   display: flex;
   flex-wrap: wrap;
@@ -197,100 +210,162 @@
   text-align: left; /* Align text to the left */
 }
 
-.flowcard {
-  background: linear-gradient(rgb(51, 51, 51) 42.77%, rgb(99, 124, 163) 101.39%), rgb(51, 51, 51);
-  color: #fff;
+.flowcard, .flowcardsmall, .flowcard-medium, .flowcard-large {
+  position: relative;
+  color: var(--white-color);
   border-radius: 15px;
   padding: 20px;
-  transition: transform 0.2s;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex-basis: calc(50% - 20px); /* Adjust for the gap, assuming two cards per row */
-  height: auto; /* Ensure cards can grow to fit content */
+  transition: transform 0.2s;
+  background: linear-gradient(to bottom, var(--gradient-to-right-start), var(--gradient-to-right-end));
+  box-shadow: 0 4px 8px var(--box-shadow-color);
 }
 
-.flowcardsmall {
-  color: #fff;
+.flowcard-medium-down, .flowcard-large-down {
+  position: relative;
+  color: var(--white-color);
   border-radius: 15px;
   padding: 20px;
-  transition: transform 0.2s;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex-basis: calc(50% - 20px); /* Adjust for the gap, assuming two cards per row */
-  height: auto; /* Ensure cards can grow to fit content */
+  transition: transform 0.2s;
+  background: linear-gradient(to top, var(--gradient-to-right-start), var(--gradient-to-right-end));
+  box-shadow: 0 4px 8px var(--box-shadow-color);
 }
 
-.flowcard-title{
-  color: rgba(241, 241, 244, 0.6);
+.flowcard:hover, .flowcardsmall:hover, .flowcard-medium:hover, .flowcard-large:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+}
+
+.flowcard-title {
   font-size: 24px;
   font-weight: 400;
   line-height: 120%;
   letter-spacing: -0.72px;
+  color: var(--title-color);
 }
 
-.flowcard-title-small{
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 120%;
-  letter-spacing: -0.72px;
-}
-
-/* flowcard p */
 .flowcard p {
-  color: rgb(241, 241, 244);
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
+  color: var(--text-color);
+  font-size: 24px; /* Adjusted for readability */
   line-height: 100%;
-  letter-spacing: -0.96px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.flowcard-large {
-  position: relative; /* Set position to relative for absolute positioning of children */
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start; /* Align items to the top */
-  border-radius: 20px;
+/* Image specific styles for better responsiveness */
+.flowcard-large img, .flowcard img {
+  width: 100%; /* Full width of their container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image is fully visible */
+  /* max height 100px */
+  max-height: 250px;
+}
+
+@media screen and (max-width: 768px) {
+  .flowcard, .flowcard-medium, .flowcard-large {
+    flex-basis: 90%; /* Cards take full width on smaller screens */
+  }
+  .flowcard-large {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+  }
+  .flowcard-title {
+    font-size: 24px; /* Slightly smaller font size for smaller screens */
+  }
+  .flowcard p {
+    font-size: 24px; /* Adjusted for readability on smaller screens */
+  }
+}
+
+.step-indicator {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  color: var(--gradient-to-right-start);
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.project-parallax {
+  height: 300px; /* Adjust height as needed */
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background: -webkit-linear-gradient(to right, #055e94, #3a86b4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #055e94, #3a86b4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding-bottom: 0; /* Remove padding at the bottom */
 }
 
-
-.flowcard-large .content {
-  flex: 1; /* Allows content to fill available space */
-  padding-right: 20px; /* Adjust spacing between text and image */
+.parallax-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: absolute;
+  top: -10%; /* Start a bit above the container */
+  left: 0;
+  width: 100%;
+  height: 120%; /* More than 100% to allow for vertical movement */
 }
 
-
-.flowcard-large img {
-  position: absolute; /* Position the image absolutely within the card */
-  bottom: 0; /* Align the bottom of the image with the bottom of the card */
-  right: 0; /* Align the right of the image with the right of the card */
-  width: auto; /* Keep the image width automatic */
-  max-height: 100%; /* Ensure the image does not exceed the card's height */
-  object-fit: contain; /* Maintain aspect ratio without cropping */
-  margin-bottom: 0; /* Remove margin at the bottom */
-  max-height: calc(100% - 20px)
+.adjust-left {
+  background-position: calc(50% - 50px) center; /* Only moves this specific background 10px left from the center */
 }
 
-/* If you want all cards to be the same height explicitly */
-.flowcard {
-  height: 300px; /* Example fixed height */
+.adjust-right {
+  background-position: calc(50% + 30px) calc(50% + 70px); /* Moves background 10px down from the center */ 
 }
 
-.flowcard-medium {
-  background: -webkit-linear-gradient(to bottom, #055e94, #3a86b4); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #055e94, #3a86b4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  flex-basis: calc(25% - 20px); /* Adjust for the gap */
-  height: 300px; /* Height should be auto to contain the content */
+.adjust-top {
+  background-position: calc(50% - 90px) top; /* Only moves this specific background 10px left from the center */
 }
 
-/* Add more CSS as required for styling text, buttons, etc. */
+.adjust-bottom {
+  background-position: center calc(50% + 70px); /* Moves background 10px down from the center */
+}
+
+.project-card {
+  width: 300px;
+}
+
+.project-card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-parallax:hover .parallax-background {
+  transform: scale(1.1); /* Slightly enlarge the background image on hover */
+}
+
+.project-parallax:hover .overlay {
+  background-color: rgba(0, 0, 0, 0.5); /* Lighten the overlay on hover for better visibility of the image */
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Certification Logos */
+.certification-logo {
+  height: 3rem; /* Adjust based on actual logo size */
+  margin: 0 1rem;
+}
+
+/* KPI Counters */
+.kpi-counter {
+  font-size: 4rem; /* Large font size for impact */
+  color: #4c51bf; /* Adjust the color to match your branding */
+  font-weight: bold;
+}
+
+.kpi-description {
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  color: #4a5568; /* A shade of gray for readability */
+}

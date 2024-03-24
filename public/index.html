@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.10.4/dist/gsap.min.js"></script>
     <link rel="preload" href="landing-banner-2.webp" as="image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   </head>
   <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
     <div id="loader" class="loader"></div>
@@ -176,6 +177,39 @@
             </div>
           </div>
         </div>
+        <div class="mt-12 text-center">
+          <h3 class="text-3xl text-gray-800 font-bold mb-6">
+            Nos Certifications
+          </h3>
+          <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <div class="flex justify-center items-center mb-8">
+            <img src="certifications/qualipac.png" alt="QUALIPAC 2024" class="h-24 mx-4">
+            <img src="certifications/qualipv.webp" alt="QUALIPV" class="h-48 mx-4 mt-4">
+          </div>
+          
+          <h3 class="text-3xl text-gray-800 font-bold mb-6">
+            Nos Performances
+          </h3>
+          <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <div class="flex flex-wrap justify-around items-center">
+            <div class="w-full md:w-1/3 text-center p-4">
+              <span class="kpi-counter text-5xl font-bold text-blue-500" data-target="10">0</span>
+              <p class="text-lg text-gray-600">ans d'expertise</p>
+            </div>
+            <div class="w-full md:w-1/3 text-center p-4">
+              <span class="kpi-counter text-5xl font-bold text-blue-500" data-target="99">0%</span> <span class="text-5xl font-bold text-blue-500">%</span>
+              <p class="text-lg text-gray-600">satisfaction client</p>
+            </div>
+            <div class="w-full md:w-1/3 text-center p-4">
+              <span class="kpi-counter text-5xl font-bold text-blue-500" data-target="50">0+</span> <span class="text-5xl font-bold text-blue-500">+</span>
+              <p class="text-lg text-gray-600">installations réalisées</p>
+            </div>
+          </div>
+          
       </div>
     </section>
 
@@ -270,96 +304,177 @@
       </div>
     </section>
     
-    <section id="projets" class="bg-white border-b py-8">
-      <div data-aos="fade-right" data-aos-duration="1000"  class="container max-w-5xl mx-auto m-8">
+    <section id="projets-realises" class="bg-white py-8">
+      <div class="container mx-auto px-8">
         <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-          Bibiliothèque de projets
+          Nos Réalisations
         </h2>
         <div class="w-full mb-4">
           <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
-        <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap">
-          <div class="w-5/6 sm:w-1/2 p-6">
-            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-              Installation sur mesure
-            </h3>
-            <p class="text-gray-600 mb-8">
-              De la robustesse de nos toitures innovantes à l'efficience suprême de notre isolation et nos systèmes de chauffage et d'électricité de pointe, nous métamorphosons votre habitation en un sanctuaire de bien-être et d'économies.              <br />
-              <br />
-            </p>
-          </div>
-          <div class="w-full sm:w-1/2 p-6">
-            <img class="rounded-3xl sm:h-64 mx-auto" src="icon-2.webp" />
-          </div>
-        </div>
-        <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap flex-col-reverse sm:flex-row">
-          <div class="w-full sm:w-1/2 p-6">
-            <img class="rounded-3xl sm:h-64 mx-auto" src="landing-banner-4.webp" />
-          </div>
-          <div class="w-full sm:w-1/2 p-6 mt-6">
-            <div class="align-middle">
-              <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-                Innovation et Durabilité
-              </h3>
-              <p class="text-gray-600 mb-8">
-                Nous sommes engagés dans la qualité et la durabilité. Summum Bat est synonyme d'innovation, offrant des installations solaires et des rénovations énergétiques personnalisées qui respectent l'environnement tout en valorisant votre propriété.
-                <br />
-                <br />
-              </p>
+        <p class="text-center text-xl text-gray-600 mb-8">
+          Découvrez quelques-uns des projets que nous avons réalisés.
+        </p>
+        <div class="flex flex-wrap -mx-2 justify-center">
+
+          <!-- Additional Solar Projects as needed -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-right" style="background-image: url('projets/solaire-3.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Solaire Photovoltaïque</h3>
+                  <p class="text-sm">Installation de solutions solaires personnalisées.</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="flowcard-container bg-gray-100 py-8 flex flex-wrap justify-center text-center gap-5 shadow-lg">
-      <div data-aos="fade-down-right" data-aos-duration="500" class="flowcard flowcard-medium shadow-lg ">
-          <h2 class="flowcard-title">1ère Étape</h2>
-          <p>Passage du technicien</p>
-          <div class="text-left p-6 rounded-b-lg text-lg">Conseils et étude technique gratuite.
-            <br>
-            Solutions de financement.
+          <!-- Climatisation Project -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-bottom" style="background-image: url('projets/clim-1.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Climatisation</h3>
+                  <p class="text-sm">Installation de systèmes de climatisation écoénergétiques.</p>
+                </div>
+              </div>
+            </div>
           </div>
-      </div>
-
-      <div data-aos="fade-down-left" data-aos-duration="500" class="flowcard flowcard-large flex flex-row w-full md:w-2/3 lg:w-1/2">
-        <div class="content flex flex-col p-6 w-1/2">
-          <h2 class="flowcard-title">2ème Étape</h2>
-          <p>Validation technique et administrative.</p>
-        </div>
-        <div class="w-1/2">
-          <img data-aos="fade-up" data-aos-duration="1500" src="step2.png" alt="Icon for Step 2" class="w-full h-full object-contain">
-        </div>
-      </div>
-
-      <div data-aos="fade-up-right" data-aos-duration="500" class="flowcard flowcard-large flex flex-row w-full md:w-2/3 lg:w-1/2 shadow-lg">
-        <div class="w-1/2">
-          <img data-aos="fade-up" data-aos-duration="1500" src="step3.png" alt="Icon for Step 3" class="w-full h-full object-contain left-10">
-        </div>
-        <div class="content flex flex-col p-6 w-1/2">
-          <h2 class="flowcard-title">3ème Étape</h2>
-          <p>Pose de votre projet.</p>
-                    <div class="text-left p-6 rounded-b-lg text-lg">
-                      
-            <br>
-
+          
+          <!-- Heat Pump Project -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-top" style="background-image: url('projets/heatpump-1.jpeg'); background-position: center 80%;"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Pompe à chaleur</h3>
+                  <p class="text-sm">Installation de pompes à chaleur haute performance.</p>
+                </div>
+              </div>
+            </div>
           </div>
+    
+          <!-- Isolation Project -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-bottom" style="background-image: url('projets/isolation-1.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Isolation</h3>
+                  <p class="text-sm">Amélioration de l'isolation des murs par l'extérieur.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Solar Projects -->
+          <!-- Repeat the structure for solar projects, just change the image URLs and titles/descriptions -->
+          <!-- Example for solaire-1.jpeg -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background" style="background-image: url('projets/solaire-1.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Solaire Photovoltaïque</h3>
+                  <p class="text-sm">Paramétrage de panneaux solaires pour une efficacité maximale.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat for each solar project, adjusting the image URL and project details accordingly -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-left" style="background-image: url('projets/solaire-2.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Solaire Photovoltaïque</h3>
+                  <p class="text-sm">
+                    Production d'électricité solaire pour une autonomie énergétique.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+        
+          <!-- You can continue adding project cards for solaire-4.jpeg, solaire-5.jpeg, and any other projects -->
+        
         </div>
       </div>
-
-      <div data-aos="fade-up-left" data-aos-duration="500" class="flowcard flowcard-medium">
-          <h2 class="flowcard-title">4ème Étape</h2>
-          <p>Fin de chantier</p>
-          <div class="text-left p-6 rounded-b-lg text-lg">Rédaction du procès-verbal.
-            <br>
-              Début des garanties.
-          </div>
-      </div>
-    </section>
-
+    </section>            
     
     
+
+    <section id="steps" class="relative bg-gray-100 py-8 flex flex-wrap justify-center text-center gap-5 shadow-lg">
+      <h2 class="w-full my-2 text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-center text-gray-800">
+        Les prochaines étapes
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+    
+      <!-- Step 1 -->
+      <div data-aos="fade-down-right" data-aos-duration="500" class="flowcard flowcard-medium shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+        <div class="step-indicator">1</div>
+        <h2 class="flowcard-title">1ère Étape</h2>
+        <p>Passage du technicien</p>
+        <i class="fas fa-tools fa-2x mb-1"></i> <!-- Technician icon -->
+        <div class="text-left p-2 rounded-b-lg text-lg">Conseils et étude technique gratuite.<br>Solutions de financement.</div>
+        <div class="text-center justify-center items-center">
+          <button onclick="call()"
+          class="w-1/2 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+          Appeler
+        </button>
+      </div>
+      </div>
+    
+      <!-- Step 2 -->
+      <div data-aos="fade-down" data-aos-duration="500" class="flowcard flowcard-large shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full md:w-2/3 lg:w-1/2">
+        <div class="flex md:flex-row flex-col w-full">
+          <div class="md:order-first order-last md:w-1/2 p-2">
+            <div class="step-indicator">2</div>
+            <h2 class="flowcard-title">2ème Étape</h2>
+            <p>Validation technique et administrative.</p>
+            <i class="fas fa-check-circle fa-2x mb-1"></i> <!-- Validation icon -->
+            <div class="rounded-b-lg text-lg">Examen détaillé du projet pour garantir la conformité aux normes en vigueur.<br>Validation des documents administratifs nécessaires.</div>
+          </div>
+          <div class="md:order-last order-first md:w-1/2">
+            <img data-aos="fade-up" data-aos-duration="1500" src="step2.png" alt="Icon for Step 2" class="object-contain max-w-full h-auto">
+          </div>
+        </div>
+      </div>
+    
+      <!-- Step 3 -->
+      <div data-aos="fade-up-right" data-aos-duration="500" class="flowcard flowcard-large-down shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full md:w-2/3 lg:w-1/2">
+        <div class="flex flex-col md:flex-row w-full">
+          <div class="md:flex-1">
+            <img data-aos="fade-up" data-aos-duration="1500" src="step3.png" alt="Icon for Step 3" class="object-contain max-w-full h-auto">
+          </div>
+          <div class="md:flex-1 p-2">
+            <div class="step-indicator">3</div>
+            <h2 class="flowcard-title">3ème Étape</h2>
+            <p>Pose de votre projet.</p>
+            <i class="fas fa-wrench fa-2x mb-1"></i> <!-- Installation icon -->
+            <div class="text-left p-2 rounded-b-lg text-lg">Installation professionnelle et conforme aux normes.<br>Mise en service et vérification du fonctionnement optimal.</div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Step 4 -->
+      <div data-aos="fade-up" data-aos-duration="500" class="flowcard flowcard-medium-down shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+        <div class="step-indicator">4</div>
+        <h2 class="flowcard-title">4ème Étape</h2>
+        <p>Fin de chantier</p>
+        <i class="fas fa-clipboard-check fa-2x mb-1"></i> <!-- Project completion icon -->
+        <div class="text-left p-2 rounded-b-lg text-lg">Rédaction du procès-verbal.<br>Début des garanties.</div>
+        
+          </div>
+        </section>     
+
   </div>
+
     <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">

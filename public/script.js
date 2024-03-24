@@ -200,3 +200,48 @@ window.addEventListener('load', function() {
   };
   img.src = 'landing-banner-2.webp';
 });
+
+window.addEventListener('scroll', function() {
+  document.querySelectorAll('.project-parallax .parallax-background').forEach(function(bg) {
+    var rect = bg.parentElement.getBoundingClientRect();
+    var speed = parseFloat(bg.parentElement.getAttribute('data-speed'));
+    
+    // Check if the element is within the viewport
+    if(rect.bottom > 0 && rect.top < window.innerHeight) {
+      var offset = rect.top * speed * -0.5;
+      bg.style.transform = `translate3d(0, ${offset}px, 0)`;
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const counters = document.querySelectorAll('.kpi-counter');
+
+  const startCount = (counter) => {
+    const target = +counter.getAttribute('data-target').replace(/[^\d]/g, '');
+    let count = 0;
+    const increment = target / (1000 / 16);
+
+    const timer = setInterval(() => {
+      count += increment;
+      if (count > target) {
+        count = target;
+        clearInterval(timer);
+      }
+      counter.innerText = Math.floor(count) + counter.getAttribute('data-target').replace(/\d/g, '');
+    }, 16);
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startCount(entry.target);
+        observer.unobserve(entry.target); // Stop observing the target after animation starts
+      }
+    });
+  }, {threshold: 0.5}); // Configure threshold according to when you want the animation to start
+
+  counters.forEach(counter => {
+    observer.observe(counter); // Observe each counter
+  });
+});
