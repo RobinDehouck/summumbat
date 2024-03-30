@@ -388,3 +388,23 @@
     width: calc(100% - 1rem); /* Adjust for mobile screens, one item per row */
   }
 }
+
+.duration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.duration-content {
+  background-color: #E2E8F0; /* Light gray background */
+  color: #2D3748; /* Dark gray text */
+  padding: 8px 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  transition: transform 0.3s ease-in-out;
+}
+
+.duration-content:hover {
+  transform: scale(1.05); /* Slight scale on hover for interaction feedback */
+}

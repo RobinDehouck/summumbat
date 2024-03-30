@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 // Create a GSAP timeline with paused state to control the start manually
-const tl = gsap.timeline({ paused: true, onComplete: () => restartAnimation() });
+const tl = gsap.timeline({ paused: true });
 
 // Function to simulate a click effect on the "+" icon
 function clickPlusEffect() {
@@ -170,7 +170,7 @@ animateIconsIn();
 
 // Wait 5 seconds after the last icon animation to start fading out
 tl.to({}, { duration: 5 }, "+=0.1");
-animateOut();
+// animateOut();
 
 // Start the animation
 tl.play();
