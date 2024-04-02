@@ -408,3 +408,17 @@
 .duration-content:hover {
   transform: scale(1.05); /* Slight scale on hover for interaction feedback */
 }
+
+.calendly-inline-widget {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* green 009543 */
+.green-color{
+  color: #009543;
+}
+
+[data-id="branding"] {
+  display: none !important;
+}

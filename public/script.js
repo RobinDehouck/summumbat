@@ -84,6 +84,10 @@ function call() {
   }
 }
 
+function book() {
+  window.location.href = "#footer";
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll("nav ul li a");
@@ -245,3 +249,4 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(counter); // Observe each counter
   });
 });
+
