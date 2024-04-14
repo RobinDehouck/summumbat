@@ -34,11 +34,14 @@
         <div class="pl-4 flex items-center">
           <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
 
-            <div class="flex items-center">
-              <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="h-12 w-12"> <!-- Added mr-2 for some spacing -->
+            <div class="flex items-center relative">
+              <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="h-16 w-16">
+              <img id="logo-letter" src="summum-letters-2.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="w-60 -ml-2"> 
               <div class="flex items-center"> <!-- Ensure this div is also a flex container -->
-                ummum 
-                <p class="">B</p>at
+                <!-- <div class="flex items-center"> 
+                  ummum 
+                  <p class="">B</p>at
+                </div> -->
               </div>
             </div>            
           </a>
@@ -53,9 +56,9 @@
         </div>
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
           <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            <li class="mr-3">
+            <!-- <li class="mr-3">
               <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="catalog.html">Catalogue</a>
-            </li>
+            </li> -->
             <li class="mr-3">
               <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="#expertise">Expertise</a>
             </li>
@@ -341,10 +344,14 @@
         <i class="fas fa-tools fa-2x mb-1"></i> <!-- Technician icon -->
         <div class="text-left p-2 rounded-b-lg text-lg">Conseils et étude technique gratuite.<br>Solutions de financement.</div>
         <div class="text-center justify-center items-center">
-          <button onclick="call()"
-          class="w-2/3 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-          Prendre rendez-vous gratuitement
-        </button>
+          <a target="_blank" href="https://booking.setmore.com/scheduleappointment/8cf84e45-cc2d-4329-9ad7-a7e2d3d9e25f/services/bd1bd069-6008-44df-ae6e-cb83c9c72e2e?source=easyshare"
+          class="mt-4 rounded-md relative inline-flex items-center gap-2 h-12 w-auto px-6 py-3 text-xl font-bold text-white bg-white bg-opacity-25 hover:bg-green-600 rounded-md shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+           <span class="rounded-l-md absolute left-0 top-0 bottom-0 w-14 mr-2 bg-green-500"></span>
+           <svg class="w-6 h-6 z-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+               <path d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+           </svg>
+           <span class="z-10 ml-2">Prendre rendez-vous</span>
+          </a>
       </div>
       </div>
       <div data-aos="fade-down-right" data-aos-duration="500" class="duration-container p-2 flex justify-center items-center my-8 z-10 sm:w-full md:w-4">
@@ -533,7 +540,7 @@
       </g>
     </svg>
 
-    <section id="footer" class="container mx-auto text-center py-6 mb-12">
+    <section data-aos="fade-right" data-aos-duration="1000" id="footer" class="container mx-auto text-center py-6 mb-12">
       <h2 class="my-2 text-5xl font-bold leading-tight text-center text-white">
         Discutons de votre projet
       </h2>
@@ -555,10 +562,10 @@
         <span class="absolute left-0 top-0 bottom-0 w-12 bg-blue-500 rounded-l-full"></span> <!-- Adjusted width for visual appearance -->
         <img class="h-6 relative z-10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEp0lEQVR4nO3dSYgdRRgA4I77vhKXqBHcQQ+iXhQxeNCTuOCCStwwjFuUeIqJAQ+iBE+uUQ+iCIJicEsU3OIWQRTEEDAiGsxixCWamE3F5JNiOiomceZNpru66tV3n5n6+3/Tr6vqr7+rqiiKoiiKoug47Ic78DHW4zcswJ3YM/b4+gouxQ+27QscGnuc2cNOmGl45mOH2GPOFg7Au3pzS+xxZwlH17ehXq0NPxt7/FnBGUN8XwxlHsbEjiMLmFg/PW2vG2LHkjxcj41GR7h1HRU7pmRh0igmY7O3y61rBHA5NmnGpJGMqW/hVKzTnNUYHzvOJISZNVZo3muxY00C5mjPdbHj7TSco12/4LDYcXcWXtG+ubHj7iysFMdVsWPvpHriFsPKsky/9YQsFs+c9j+CHYePxHVl7GvQKXg6ckJ+wsGxr0Nn4Hbx3RP7OnQGJsTOBr6KfR06A7tiTeSErI19Hfp56WRrvo99DToFN4nrjdjXoFMwFn9ETMiNsa9B5+ClSMlYjb1jx985uChSQmbEjr2TsCO+bjkZy7FH7Ng7K8IkcWLsmDsN+9QbSG34pNT/Di8pM1pKyFnNf8QygL3CRK3hZMyOHWdSMKXBZPyOY2LHmBTsMsKK9+GYFTu+JDVYjbIknDeJHV+S8HJDSZldan1HlpBxWNVQUqaN/keoD4SjaQ0lZCPOix1fcsLkDe83lJRVODF2jMnB4Q0W1C3HEbFjTA4u1pyFoRlB7BiTgycaTMo7YX8/doxJCW0zGpwwBs+GbYDYcSYFp9TLH015qqwC956UyZo1q0wce0/K4w0n5f5ex9TXsPMI+p/06u7YcSYlFEljacNJmRk7zqTg5IaPUwePlO+U3pJyRYMNBzZ7tDx99ZaU6Zr3TGik1vO/cb/Cwy0k5bmwoxk71pRWhp9vISnzsG/seJOA3fBeC0lZMNIGBHX92a14q17FXlcffr0XB1W5wf71Cm7TlvSyn1Kvxd01xAGlH0NXpCrTOcqiFpLyKy4cYixj6va23/Twe+dm1wIkbDy1dA5+U93Cdov+jjgbn47w94ay2oEqJ6G9H5Zpx+zNG104bhTPvIR+MOOqXOB4fKcdi/FYAyfCfsY1VS5w0na2nO2KV0ONQZUDnIBvpS8cwxvIYn2tvrcvk4fXs+gjiSND9wZ5CJPKqckvfBp8JP5SPkIx4bFVBrXDC+UjrADcnPR3i8G39bSx9tWmUGN2SJX4guRseVmU9OufDC7dPyQv06vUYVoL28Ft+azK6KUA66VvfZVZyepSaVtVZbin8oF0za8yfV3fg9I0pcqVwQnXaLwTqy0rsu8DZrBKso1t4e0VnhIvqPoBdscDuu2+qt/gknoXr2ve7NvqSoxv4UhELz7v+8OrBkt8BupdvJhCPVfpcvSfs/QvRkrGBpz+92CKf+Dc+tbRlj9x2b+GUGzjuN3kFkqPQr+Wq7cYQPG/tbxTG2oLEpJx7Tb+dDGMxAyM4qRyQ5YF2ZE2wc7HC9vR/CAsiZzW+uBzhwPDu97r+t81w1wOCV0mxsYee780/TwTt+FJfFi3XV9XV8CHYusJscdZFEVRFEVRVEP4Czo6iWQ6CRWgAAAAAElFTkSuQmCC">
               <h1 class="text-xl ml-4 relative z-10">07 88 87 91 57</h1>
-            </div>
-          </div>
+      </div>
+    </div>
     
-      <div data-aos="fade-right" data-aos-duration="1000" class="mt-10">  
+      <div class="mt-10">  
         <h3 class="w-full my-2 text-3xl font-bold leading-tight text-center text-white">
           Obtenir un rendez-vous
         </h3>
@@ -573,9 +580,8 @@
              <path d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
          </svg>
          <span class="z-10 ml-2">Prendre un rendez-vous</span>
-     </a>
-       
-     
+        </a>
+      </div>
     </section>
     
   </div>

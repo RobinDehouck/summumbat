@@ -16,7 +16,8 @@ document.addEventListener("scroll", function () {
     navaction.classList.add("gradient-bg");
     navaction.classList.remove("text-gray-800");
     navaction.classList.add("text-white");
-    //Use to switch toggleColour colours
+    // logo-letter src to summum-letters-black
+    document.getElementById("logo-letter").src = "summum-letters-black.png";
     for (var i = 0; i < toToggle.length; i++) {
       toToggle[i].classList.add("text-gray-800");
       toToggle[i].classList.remove("text-white");
@@ -29,6 +30,7 @@ document.addEventListener("scroll", function () {
     navaction.classList.remove("gradient-bg");
     navaction.classList.add("bg-white");
     navaction.classList.remove("text-white");
+    document.getElementById("logo-letter").src = "summum-letters-2.png";
     //Use to switch toggleColour colours
     for (var i = 0; i < toToggle.length; i++) {
       toToggle[i].classList.add("text-white");
