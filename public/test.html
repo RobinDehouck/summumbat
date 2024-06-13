@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplecart/3.0.6/simplecart.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header>
+        <h1>Solar Panels Catalog</h1>
+    </header>
+    <main>
+        <section class="product">
+            <h2>Solar Panel Model A</h2>
+            <p>Description of Solar Panel Model A</p>
+            <p>$199.99</p>
+            <button id="checkout-button-1" class="checkout-button" data-price-id="price_1XYZABC">Buy Now</button>
+        </section>
+        <!-- Add more products as needed -->
+    </main>
+    <footer>
+        <form method="POST" data-netlify="true">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+            <label for="address">Address:</label>
+            <textarea name="address" id="address" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </footer>
+    <div class="simpleCart_items"></div>
+    <div class="simpleCart_total"></div>
+    <a href="javascript:;" class="simpleCart_checkout">Checkout</a>
+    <script>
+        var stripe = Stripe('your-publishable-key-here');
+
+        var checkoutButton = document.getElementById('checkout-button-1');
+
+        checkoutButton.addEventListener('click', function () {
+            fetch('/api/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    priceId: 'price_1XYZABC',
+                }),
+            })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
