@@ -7,14 +7,16 @@ const app = express();
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route to serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Route to serve test.html
-app.get('/test', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'test.html'));
+// Redirect routes without file extensions to the correct HTML files
+app.get('/:page', (req, res, next) => {
+  const page = req.params.page;
+  const filePath = path.join(__dirname, 'public', `${page}.html`);
+  
+  res.sendFile(filePath, err => {
+    if (err) {
+      next();
+    }
+  });
 });
 
 // Fallback to index.html for any other routes
