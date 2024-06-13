@@ -11,8 +11,8 @@ module.exports = async (req, res) => {
                 quantity: 1,
             }],
             mode: 'payment',
-            success_url: `${process.env.VERCEL_URL}/success`,
-            cancel_url: `${process.env.VERCEL_URL}/canceled`,
+            success_url: `https://www.summumbat.fr/`,
+            cancel_url: `https://www.summumbat.fr/`,
         });
 
         res.status(200).json({ id: session.id });
