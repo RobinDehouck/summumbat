@@ -1,11 +1,9 @@
 const express = require('express');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const router = express.Router();
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 router.post('/', async (req, res) => {
-    console.log('Request received:', req.body);
-
-    const { priceId } = req.body;
+    const { priceId, email, address, phone } = req.body;
 
     try {
         const session = await stripe.checkout.sessions.create({
@@ -17,14 +15,18 @@ router.post('/', async (req, res) => {
             mode: 'payment',
             success_url: `https://www.summumbat.fr/success`,
             cancel_url: `https://www.summumbat.fr/canceled`,
+            metadata: {
+                email: email,
+                address: address,
+                phone: phone,
+                product: priceId
+            }
         });
-
-        console.log('Session created:', session);
 
         res.status(200).json({ id: session.id });
     } catch (error) {
-        console.error('Error creating session:', error);
-        res.status(500).json({ error: error.message });
+        console.error('Error creating session:', error.message);
+        res.status(500).json({ error: 'Failed to create Stripe checkout session' });
     }
 });
 
