@@ -21,6 +21,19 @@ app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Middleware to handle requests without file extensions
+app.use((req, res, next) => {
+  if (path.extname(req.path).length === 0) {
+    res.sendFile(path.join(__dirname, 'public', `${req.path}.html`), err => {
+      if (err) {
+        next();
+      }
+    });
+  } else {
+    next();
+  }
+});
+
 // Import and use the API routes
 const createCheckoutSession = require('./api/create-checkout-session');
 app.use('/api/create-checkout-session', createCheckoutSession);
@@ -65,7 +78,6 @@ app.post('/webhook', async (req, res) => {
     res.status(200).json({ received: true });
 });
 
-// Remove the manual static file routing since Vercel will handle this
 // Fallback to index.html for any other routes (for SPA behavior)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
