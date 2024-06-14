@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-
 router.post('/', async (req, res) => {
     console.log("Received request:", req.body);
 

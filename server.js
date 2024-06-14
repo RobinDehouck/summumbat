@@ -20,8 +20,8 @@ app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import and use the API routes from the public directory
-const createCheckoutSession = require('./public/create-checkout-session');
+// Import and use the API routes
+const createCheckoutSession = require('./api/create-checkout-session');
 app.use('/api/create-checkout-session', createCheckoutSession);
 
 // Webhook endpoint to handle Stripe events
