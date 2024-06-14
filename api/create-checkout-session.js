@@ -3,9 +3,12 @@ const router = express.Router();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 router.post('/', async (req, res) => {
+    console.log("Received request:", req.body);
+
     const { priceId, email, address, phone } = req.body;
 
     try {
+        console.log("Creating session with Stripe...");
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [{
@@ -23,6 +26,7 @@ router.post('/', async (req, res) => {
             }
         });
 
+        console.log("Session created:", session.id);
         res.status(200).json({ id: session.id });
     } catch (error) {
         console.error('Error creating session:', error.message);
