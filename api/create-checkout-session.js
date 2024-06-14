@@ -8,6 +8,11 @@ router.post('/', async (req, res) => {
     const { priceId, email, address, phone } = req.body;
 
     try {
+        if (!process.env.STRIPE_SECRET_KEY) {
+            throw new Error("Missing Stripe Secret Key");
+        }
+        console.log("Stripe Secret Key is available.");
+
         console.log("Creating session with Stripe..."); // Log before creating session
 
         const session = await stripe.checkout.sessions.create({
@@ -30,7 +35,7 @@ router.post('/', async (req, res) => {
         console.log("Session created:", session.id); // Log the session id
         res.status(200).json({ id: session.id });
     } catch (error) {
-        console.error('Error creating session:', error.message); // Log the error message
+        console.error('Error creating session:', error); // Log the entire error object
         res.status(500).json({ error: 'Failed to create Stripe checkout session' });
     }
 });
