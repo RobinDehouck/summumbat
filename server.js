@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware to handle requests without file extensions
 app.use((req, res, next) => {
-  if (path.extname(req.path).length === 0) {
+  if (path.extname(req.path).length === 0 && req.path !== '/') {
     res.sendFile(path.join(__dirname, 'public', `${req.path}.html`), err => {
       if (err) {
         next();
