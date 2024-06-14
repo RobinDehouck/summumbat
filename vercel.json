@@ -16,15 +16,15 @@
       "dest": "/api/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/public/$1"
+      "src": "/test",
+      "dest": "/public/test.html"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/public/$1"
     }
   ]
 }
