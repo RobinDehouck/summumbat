@@ -5,14 +5,15 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 router.post('/', async (req, res) => {
     console.log("Received request:", req.body); // Log the incoming request
 
+    // Log all environment variables to ensure they are being accessed correctly
+    console.log("STRIPE_SECRET_KEY:", process.env.STRIPE_SECRET_KEY);
+    console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
+    console.log("SUPABASE_KEY:", process.env.SUPABASE_KEY);
+    console.log("STRIPE_WEBHOOK_SECRET:", process.env.STRIPE_WEBHOOK_SECRET);
+
     const { priceId, email, address, phone } = req.body;
 
     try {
-        if (!process.env.STRIPE_SECRET_KEY) {
-            throw new Error("Missing Stripe Secret Key");
-        }
-        console.log("Stripe Secret Key is available.");
-
         console.log("Creating session with Stripe..."); // Log before creating session
 
         const session = await stripe.checkout.sessions.create({

@@ -41,11 +41,17 @@
         
         var checkoutButton = document.getElementById('checkout-button-1');
         var paymentForm = document.getElementById('payment-form');
-
+    
         checkoutButton.addEventListener('click', function () {
             var priceId = checkoutButton.getAttribute('data-price-id');
             document.getElementById('product_id').value = priceId;
-
+    
+            console.log('Initiating fetch request to /api/create-checkout-session');
+            console.log('Price ID:', priceId);
+            console.log('Email:', document.getElementById('email').value);
+            console.log('Address:', document.getElementById('address').value);
+            console.log('Phone:', document.getElementById('phone').value);
+    
             fetch('/api/create-checkout-session', {
                 method: 'POST',
                 headers: {
@@ -59,12 +65,14 @@
                 }),
             })
             .then(function (response) {
+                console.log('Fetch response:', response);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
                 return response.json();
             })
             .then(function (session) {
+                console.log('Session received:', session);
                 if (!session.id) {
                     throw new Error('Session ID not returned');
                 }
@@ -79,11 +87,12 @@
                 console.error('Error:', error);
             });
         });
-
+    
         paymentForm.addEventListener('submit', function (event) {
             event.preventDefault();
             checkoutButton.click();
         });
     </script>
+    
 </body>
 </html>
