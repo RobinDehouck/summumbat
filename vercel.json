@@ -16,10 +16,6 @@
       "dest": "/api/$1"
     },
     {
-      "src": "/test",
-      "dest": "/public/test.html"
-    },
-    {
       "handle": "filesystem"
     },
     {
