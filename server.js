@@ -2,22 +2,30 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// Middleware to handle raw body (required for Stripe webhooks)
+app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import and use the API routes
-const createCheckoutSession = require('./api/create-checkout-session');
+// Import and use the API routes from the public directory
+const createCheckoutSession = require('./public/create-checkout-session');
 app.use('/api/create-checkout-session', createCheckoutSession);
 
 // Webhook endpoint to handle Stripe events
-app.post('/webhook', bodyParser.raw({ type: 'application/json' }), async (req, res) => {
+app.post('/webhook', async (req, res) => {
     const sig = req.headers['stripe-signature'];
     let event;
 
@@ -68,7 +76,7 @@ app.get('/:page', (req, res, next) => {
     });
 });
 
-// Fallback to index.html for any other routes
+// Fallback to index.html for any other routes (for SPA behavior)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
