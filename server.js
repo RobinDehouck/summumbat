@@ -65,19 +65,8 @@ app.post('/webhook', async (req, res) => {
     res.status(200).json({ received: true });
 });
 
-// Redirect routes without file extensions to the correct HTML files
-app.get('/:page', (req, res, next) => {
-  const page = req.params.page;
-  const filePath = path.join(__dirname, 'public', `${page}.html`);
-
-  res.sendFile(filePath, err => {
-    if (err) {
-      next();
-    }
-  });
-});
-
-// Fallback to index.html for any other routes
+// Remove the manual static file routing since Vercel will handle this
+// Fallback to index.html for any other routes (for SPA behavior)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
