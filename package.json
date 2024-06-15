@@ -2,10 +2,11 @@
   "name": "summumbat",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node index.ts",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "stripe": "^15.11.0",
-    "supabase": "^1.176.10",
     "typescript": "^5.4.5"
   }
 }
