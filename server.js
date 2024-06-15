@@ -1,55 +1,77 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-const { createClient } = require('@supabase/supabase-js');
+import express, { Request, Response } from 'express';
+import dotenv from 'dotenv';
+import path from 'path';
+import bodyParser from 'body-parser';
+import { createClient } from '@supabase/supabase-js';
+import Stripe from 'stripe';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL as string;
+const supabaseKey = process.env.SUPABASE_KEY as string;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Middleware to parse JSON bodies
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: '2022-11-15' });
+
 app.use(express.json());
-
-// Middleware to handle raw body (required for Stripe webhooks)
 app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
-
-// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Import and use the API routes
-const createCheckoutSession = require('./api/create-checkout-session');
-app.use('/api/create-checkout-session', createCheckoutSession);
+app.post('/api/create-checkout-session', async (req: Request, res: Response) => {
+    console.log("Received request:", req.body);
 
-// Webhook endpoint to handle Stripe events
-app.post('/webhook', async (req, res) => {
-    const sig = req.headers['stripe-signature'];
+    const { priceId, email, address, phone } = req.body;
+
+    try {
+        console.log("Creating session with Stripe...");
+
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [{
+                price: priceId,
+                quantity: 1,
+            }],
+            mode: 'payment',
+            success_url: `https://www.summumbat.fr/success`,
+            cancel_url: `https://www.summumbat.fr/canceled`,
+            metadata: {
+                email: email,
+                address: address,
+                phone: phone,
+                product: priceId
+            }
+        });
+
+        console.log("Session created:", session.id);
+        res.status(200).json({ id: session.id });
+    } catch (error) {
+        console.error('Error creating session:', (error as Error).message);
+        res.status(500).json({ error: 'Failed to create Stripe checkout session' });
+    }
+});
+
+app.post('/webhook', async (req: Request, res: Response) => {
+    const sig = req.headers['stripe-signature'] as string;
     let event;
 
     try {
-        event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET);
+        event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET as string);
     } catch (err) {
         console.error('⚠️  Webhook signature verification failed.', err.message);
         return res.status(400).send(`Webhook Error: ${err.message}`);
     }
 
-    // Handle the checkout.session.completed event
     if (event.type === 'checkout.session.completed') {
         const session = event.data.object;
-
-        // Retrieve customer details from the session object
         const { email, address, phone, product } = session.metadata;
 
         try {
-            // Insert customer data into Supabase
             const { data, error } = await supabase
                 .from('customers')
-                .insert([
-                    { email: email, address: address, phone: phone, product: product, created_at: new Date() }
-                ]);
+                .insert([{ email, address, phone, product, created_at: new Date() }]);
 
             if (error) {
                 console.error('Error inserting customer data into Supabase:', error);
@@ -57,14 +79,13 @@ app.post('/webhook', async (req, res) => {
                 console.log('Customer data inserted into Supabase:', data);
             }
         } catch (error) {
-            console.error('Error handling webhook event:', error.message);
+            console.error('Error handling webhook event:', (error as Error).message);
         }
     }
 
     res.status(200).json({ received: true });
 });
 
-// Redirect routes without file extensions to the correct HTML files
 app.get('/:page', (req, res, next) => {
     const page = req.params.page;
     const filePath = path.join(__dirname, 'public', `${page}.html`);
@@ -76,7 +97,6 @@ app.get('/:page', (req, res, next) => {
     });
 });
 
-// Fallback to index.html for any other routes (for SPA behavior)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
