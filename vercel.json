@@ -12,12 +12,16 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "index.ts",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/create-checkout-session",
-      "dest": "/api/create-checkout-session.js"
+      "dest": "/index.ts"
     },
     {
       "src": "/test",
