@@ -29,7 +29,7 @@ app.post('/api/create-checkout-session', async (req: Request, res: Response) => 
             line_items: [{ price: priceId, quantity: 1 }],
             mode: 'payment',
             success_url: `https://www.summumbat.fr/success`,
-            cancel_url: `https://www.summumbat.fr/canceled`,
+            cancel_url: `https://www.summumbat.fr/test`,
             metadata: { email, address, phone, product: priceId }
         });
         res.status(200).json({ id: session.id });
