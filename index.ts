@@ -14,11 +14,11 @@ const supabaseUrl = process.env.SUPABASE_URL as string;
 const supabaseKey = process.env.SUPABASE_KEY as string;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: '2022-11-15' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: '2024-04-10' });
 
 app.use(express.json());
 app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(path.resolve(), 'public')));
 
 app.post('/api/create-checkout-session', async (req: Request, res: Response) => {
     const { priceId, email, address, phone } = req.body;
@@ -34,7 +34,13 @@ app.post('/api/create-checkout-session', async (req: Request, res: Response) => 
         });
         res.status(200).json({ id: session.id });
     } catch (error) {
-        res.status(500).json({ error: 'Failed to create Stripe checkout session' });
+        if (error instanceof Error) {
+            console.error('Error creating session:', error.message);
+            res.status(500).json({ error: 'Failed to create Stripe checkout session' });
+        } else {
+            console.error('Unexpected error:', error);
+            res.status(500).json({ error: 'An unexpected error occurred' });
+        }
     }
 });
 
@@ -45,17 +51,31 @@ app.post('/webhook', async (req: Request, res: Response) => {
     try {
         event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET as string);
     } catch (err) {
-        return res.status(400).send(`Webhook Error: ${err.message}`);
+        if (err instanceof Error) {
+            console.error('⚠️  Webhook signature verification failed.', err.message);
+            return res.status(400).send(`Webhook Error: ${err.message}`);
+        } else {
+            console.error('Unexpected error during webhook verification:', err);
+            return res.status(400).send('Webhook Error: An unexpected error occurred');
+        }
     }
 
     if (event.type === 'checkout.session.completed') {
-        const session = event.data.object;
-        const { email, address, phone, product } = session.metadata;
+        const session = event.data.object as Stripe.Checkout.Session;
+        const metadata = session.metadata as { email: string; address: string; phone: string; product: string };
+        const { email, address, phone, product } = metadata;
+
         try {
             const { data, error } = await supabase.from('customers').insert([{ email, address, phone, product, created_at: new Date() }]);
-            if (error) console.error('Error inserting customer data into Supabase:', error);
+            if (error) {
+                console.error('Error inserting customer data into Supabase:', error);
+            }
         } catch (error) {
-            console.error('Error handling webhook event:', error.message);
+            if (error instanceof Error) {
+                console.error('Error handling webhook event:', error.message);
+            } else {
+                console.error('Unexpected error handling webhook event:', error);
+            }
         }
     }
 
@@ -64,12 +84,12 @@ app.post('/webhook', async (req: Request, res: Response) => {
 
 app.get('/:page', (req, res, next) => {
     const page = req.params.page;
-    const filePath = path.join(__dirname, 'public', `${page}.html`);
+    const filePath = path.join(path.resolve(), 'public', `${page}.html`);
     res.sendFile(filePath, err => { if (err) next(); });
 });
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(path.resolve(), 'public', 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
