@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>
+      Panneau photovoltaïque, isolation, chauffage, couvreur
+    </title>
+    <link rel="icon" type="image/png" href="logosummum.png">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="app.css" />
+    <meta name="description" content="Summum Bat spécialiste en panneaux photovoltaïques, isolation, chauffage et toiture. Transformez votre habitation en une efficacité énergétique optimale.">
+    <meta name="keywords" content="panneaux photovoltaïques, isolation thermique, chauffage économique, services de couverture, rénovation énergétique, efficacité énergétique, habitation durable">
+    <meta name="author" content="SummumBat" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.10.4/dist/gsap.min.js"></script>
+    <meta property="og:title" content="Summum Bat : Experts en Panneaux Photovoltaïques, Isolation, et Chauffage" />
+    <meta property="og:description" content="Transformez votre maison en un foyer d'efficacité énergétique avec nos solutions de panneaux solaires, isolation thermique, et systèmes de chauffage innovants." />
+    <meta property="og:image" content="https://summumbat-9cb50a98fdcf.herokuapp.com/logosummum.png" />
+    <meta property="og:url" content="https://summumbat-9cb50a98fdcf.herokuapp.com/" />
+    <link rel="preload" href="landing-banner-2.webp" as="image">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  </head>
+  <body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+    <div id="root"></div>
+    <div id="loader" class="loader"></div>
+    <div id="main-content">
+    <!--Nav-->
+    <nav id="header" class="fixed w-full z-30 top-0 text-white">
+      <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+        <div class="pl-4 flex items-center">
+          <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+
+            <div class="flex items-center relative">
+              <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="h-16 w-16">
+              <img id="logo-letter" src="summum-letters-2.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="w-60 -ml-2"> 
+              <div class="flex items-center"> <!-- Ensure this div is also a flex container -->
+                <!-- <div class="flex items-center"> 
+                  ummum 
+                  <p class="">B</p>at
+                </div> -->
+              </div>
+            </div>            
+          </a>
+        </div>
+        <div class="block lg:hidden pr-4">
+          <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            </svg>
+          </button>
+        </div>
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <!-- <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="catalog.html">Catalogue</a>
+            </li> -->
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="#expertise">Expertise</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="#installations">Installations</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="#steps">Étapes</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="#projetsrealises">Réalisations</a>
+            </li>
+            <li class="mr-3">
+              <a class="inline-block text-black no-underline hover:text-gray-800 py-2 px-4" href="#localisation">Localisation</a>
+            </li>
+          </ul>
+          <button
+          onclick="call()"
+            id="navAction"
+            class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+          >
+            Appeler
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!--Hero-->
+    <div class="pt-24 background-image h-screen">
+      <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <!-- Left Col -->
+        <div class="flex flex-col w-full md:w-3/5 justify-center items-start text-center md:text-left">
+          <h1 class="my-4 text-5xl font-bold leading-tight">
+            Transformez votre foyer, 
+            <p class="text-5xl font-bold">investissez dans l'avenir.</p>
+          </h1>
+          <p class="leading-normal text-2xl">
+            Experts en rénovation énergétique : couverture, isolation, chauffage, et solaire.
+            <p class="leading-normal text-2xl mb-8 hidden md:block">Transformez votre habitation en source d'économie.</p>
+          </p>
+          <button onclick="book()" class="text-white gradient-bg mx-auto lg:mx-0 hover:underline bg-white font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            Prendre rendez-vous
+          </button>
+        </div>
+        <!-- Right Col -->
+        <div class="hidden lg:block icon-container w-full md:w-2/5 py-6 text-center flex justify-center md:justify-end">
+          <div class="icon-row">
+            <div class="solar-panel card flex flex-col items-center justify-center rounded-lg">
+              <a href="#projetsrealises">
+              <img src="icons/solarpanel-icon.png" alt="Panneau Photovoltaïque" class="h-20 w-20">
+              </a>
+              <p class="text-white">Photovoltaïque</p>
+            </div>
+          </div>
+        <div class="icon-row space-x-2">
+          
+            <div class="heat-pump card flex flex-col items-center justify-center rounded-lg">
+              <a href="#installations">
+              <img src="icons/heatpump-icon.png" alt="Pompe à chaleur" class="h-20 w-20">
+              </a>
+              <p class="text-white">Pompe à chaleur</p>
+            </div>
+            <a href="#installations">
+            <div class="icon-plus border-dashed border-2 border-white cardPlus flex flex-col items-center justify-center rounded-lg">
+              <svg height="50px" width="50px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>plus-circle</title> <desc>Created with Sketch Beta.</desc> <defs> </defs> <g id="Page-1" stroke-width="0.00032" fill="none" fill-rule="evenodd" sketch:type="MSPage"> <g id="Icon-Set" sketch:type="MSLayerGroup" transform="translate(-464.000000, -1087.000000)" fill="#ffffff"> <path d="M480,1117 C472.268,1117 466,1110.73 466,1103 C466,1095.27 472.268,1089 480,1089 C487.732,1089 494,1095.27 494,1103 C494,1110.73 487.732,1117 480,1117 L480,1117 Z M480,1087 C471.163,1087 464,1094.16 464,1103 C464,1111.84 471.163,1119 480,1119 C488.837,1119 496,1111.84 496,1103 C496,1094.16 488.837,1087 480,1087 L480,1087 Z M486,1102 L481,1102 L481,1097 C481,1096.45 480.553,1096 480,1096 C479.447,1096 479,1096.45 479,1097 L479,1102 L474,1102 C473.447,1102 473,1102.45 473,1103 C473,1103.55 473.447,1104 474,1104 L479,1104 L479,1109 C479,1109.55 479.447,1110 480,1110 C480.553,1110 481,1109.55 481,1109 L481,1104 L486,1104 C486.553,1104 487,1103.55 487,1103 C487,1102.45 486.553,1102 486,1102 L486,1102 Z" id="plus-circle" sketch:type="MSShapeGroup"> </path> </g> </g> </g></svg>
+            <div class="text-xl bold mt-4">
+              Installation
+            </div>
+            </div>
+            </a>
+          <div class="renovation card flex flex-col items-center justify-center  rounded-lg">
+            <!-- Your SVG here -->
+            <a href="#expertise">
+            <img src="icons/isolation-icon.png" alt="Isolation" class="h-20 w-20">
+            </a>
+            <p class="text-white">Isolation</p>
+          </div>
+          </div> 
+          <div class="icon-row space-x-2">
+
+          <div class="ballon-eau-chaude card flex flex-col items-center justify-center opacity-90 rounded-lg">
+            <!-- Your SVG here -->
+            <a href="#installations">
+            <img src="icons/hotwatertank-icon.png" alt="Ballon d'eau chaude" class="h-20 w-20">
+            </a>
+            <p class="text-white">Ballon d'eau chaude</p>
+          </div>
+          <div class="poele card flex flex-col items-center justify-center bg-opacity-50 opacity-90 rounded-lg">
+            <a href="#installations">
+            <img src="icons/pellet-icon.png" alt="Poêle à granulés" class="h-20 w-20">
+            </a>
+            <p class="text-white">Poêle à granulés</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="relative -mt-12 lg:-mt-24">
+      <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g transform="translate(-2.000000, 44.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+            <path
+              d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+              opacity="0.100000001"
+            ></path>
+            <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" id="Path-4" opacity="0.200000003"></path>
+          </g>
+          <g transform="translate(-4.000000, 76.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path
+              d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"
+            ></path>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <section id="expertise" class="bg-white border-b py-8">
+      <div data-aos="fade-right" data-aos-duration="1000"  class="container max-w-5xl mx-auto m-8">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Notre Expertise
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap">
+          <div class="w-5/6 sm:w-1/2 p-6">
+            <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+              Installation sur mesure
+            </h3>
+            <p class="text-gray-600 mb-8">
+              De la robustesse de nos toitures innovantes à l'efficience suprême de notre isolation et nos systèmes de chauffage et d'électricité de pointe, nous métamorphosons votre habitation en un sanctuaire de bien-être et d'économies.              <br />
+              <br />
+            </p>
+          </div>
+          <div class="w-full sm:w-1/2 p-6">
+            <img class="scroll-image rounded-3xl sm:h-64 mx-auto" src="icon-2.webp" />
+          </div>
+        </div>
+        <div data-aos="fade-right" data-aos-duration="1000" class="flex flex-wrap flex-col-reverse sm:flex-row">
+          <div class="w-full sm:w-1/2 p-6">
+            <img class="rounded-3xl sm:h-64 mx-auto" src="landing-banner-4.webp" />
+          </div>
+          <div class="w-full sm:w-1/2 p-6 mt-6">
+            <div class="align-middle">
+              <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
+                Innovation et Durabilité
+              </h3>
+              <p class="text-gray-600 mb-8">
+                Nous sommes engagés dans la qualité et la durabilité. Summum Bat est synonyme d'innovation, offrant des installations solaires et des rénovations énergétiques personnalisées qui respectent l'environnement tout en valorisant votre propriété.
+                <br />
+                <br />
+              </p>
+            </div>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1000" class="mt-12 text-center">
+          <h3 class="text-3xl text-gray-800 font-bold mb-6">
+            Nos Certifications
+          </h3>
+          <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <div class="flex justify-center items-center mb-8">
+            <img src="certifications/qualipac.png" alt="QUALIPAC 2024" class="h-24 mx-4">
+            <img src="certifications/qualipv.webp" alt="QUALIPV" class="h-48 mx-4 mt-4">
+          </div>
+          
+          <h3 class="text-3xl text-gray-800 font-bold mb-6">
+            Nos Performances
+          </h3>
+          <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <div class="flex flex-wrap justify-around items-center">
+            <div class="w-full md:w-1/3 text-center p-4">
+              <span class="kpi-counter text-5xl font-bold text-blue-500" data-target="10">0</span>
+              <p class="text-lg text-gray-600">ans d'expertise</p>
+            </div>
+            <div class="w-full md:w-1/3 text-center p-4">
+              <span class="kpi-counter text-5xl font-bold text-blue-500" data-target="99">0%</span> <span class="text-5xl font-bold text-blue-500">%</span>
+              <p class="text-lg text-gray-600">satisfaction client</p>
+            </div>
+            <div class="w-full md:w-1/3 text-center p-4">
+              <span class="kpi-counter text-5xl font-bold text-blue-500" data-target="50">0+</span> <span class="text-5xl font-bold text-blue-500">+</span>
+              <p class="text-lg text-gray-600">installations réalisées</p>
+            </div>
+          </div>
+          
+      </div>
+    </section>
+
+    <section id="installations" class="bg-white border-b py-8">
+      <div data-aos="fade-down" data-aos-duration="1000" class="container mx-auto flex flex-wrap pt-4 pb-12">
+        <h2 class="w-full my-2 text-3xl md:text-5xl font-bold leading-tight text-center text-gray-800">
+          Nos Installations
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-32 md:w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col justify-between md:rounded-tl-3xl relative mb-4 md:mb-0 group" style="background-image: url('solarpanel-bg.webp'); background-size: cover; background-position: center; height: 100%;">
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-10"></div> <!-- Pushes everything else down -->
+          <div class="text-center z-10">
+                  <div class="font-bold text-xl text-white">
+                      Panneau solaire
+                  </div>
+          </div>
+          <!-- Explanation text -->
+          <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out md:rounded-tl-3xl">
+              <span class="text-white text-center px-4">Installation de panneaux solaires à la pointe de la technologie, pour promouvoir un avenir durable tout en faisant des économies.</span>
+          </div>
+        </div>
+        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 group" style="background-image: url('heatpump-bg.webp'); background-size: cover; background-position: center;">
+          <div class="flex-grow"></div> <!-- Space -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-10"></div> <!-- Pushes everything else down -->
+          <div class="text-center z-10">
+            <div class="font-bold text-xl text-white">
+                Pompe à chaleur
+            </div>
+          </div>
+          <!-- Explanation Text -->
+          <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+              <span class="text-white text-center px-4">Expertise en installation de pompes à chaleur pour améliorer l'efficacité énergétique et réduire les coûts de chauffage.</span>
+          </div>
+        </div>
+        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 group" style="background-image: url('pelletstove-bg.webp'); background-size: cover; background-position: center;">
+          <div class="flex-grow"></div> <!-- Space -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-10"></div> <!-- Pushes everything else down -->
+          <div class="text-center z-10">
+                  <div class="font-bold text-xl text-white">
+                      Poêle à granulés
+                  </div>
+          </div>
+          <!-- Explanation Text -->
+          <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+              <span class="text-white text-center px-4">Fourniture et installation de poêles à granulés haut de gamme pour un chauffage domestique écologique et économique.</span>
+          </div>
+        </div>
+        <div class="image-overlay w-full md:w-1/4 p-4 flex flex-col relative mb-4 md:mb-0 md:rounded-tr-3xl group" style="background-image: url('hotwatertank-bg.webp'); background-size: cover; background-position: center;">
+          <div class="flex-grow"></div> <!-- Space -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-24"></div> <!-- Pushes everything else down -->
+          <div class="flex-grow h-10"></div> <!-- Pushes everything else down -->
+          <div class="text-center z-10">
+                  <div class="font-bold text-xl text-white">
+                      Ballon d'eau chaude
+                  </div>
+          </div>
+          <!-- Explanation Text -->
+          <div class="absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out md:rounded-tr-3xl">
+              <span class="text-white text-center px-4">Solutions innovantes pour l'approvisionnement en eau chaude, garantissant confort et économies d'énergie grâce au ballon thermodynamique.</span>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-down" data-aos-duration="1000" class="flex items-center justify-center mt-4">
+        <button 
+        onclick="call()"
+        class="text-white gradient-bg mx-auto lg:mx-0 hover:underline bg-white font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-80 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        Appeler
+        </button>
+      </div>
+    </section>
+
+    <section id="steps" class="relative bg-gray-100 py-8 flex flex-wrap justify-center text-center gap-5 shadow-lg">
+      <h2 class="w-full my-2 text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-center text-gray-800">
+        Les étapes de votre projet
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+    
+      <!-- Step 1 -->
+      <div data-aos="fade-down-right" data-aos-duration="500" class="flowcard flowcard-medium shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+        <div class="step-indicator">1</div>
+        <h2 class="flowcard-title">1ère Étape</h2>
+        <p>Passage du technicien</p>
+        <i class="fas fa-tools fa-2x mb-1"></i> <!-- Technician icon -->
+        <div class="text-left p-2 rounded-b-lg text-lg">Conseils et étude technique gratuite.<br>Solutions de financement.</div>
+        <div class="text-center justify-center items-center">
+          <a target="_blank" href="https://booking.setmore.com/scheduleappointment/8cf84e45-cc2d-4329-9ad7-a7e2d3d9e25f/services/bd1bd069-6008-44df-ae6e-cb83c9c72e2e?source=easyshare"
+          class="mt-4 rounded-md relative inline-flex items-center gap-2 h-12 w-auto px-6 py-3 text-xl font-bold text-white bg-white bg-opacity-25 hover:bg-green-600 rounded-md shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+           <span class="rounded-l-md absolute left-0 top-0 bottom-0 w-14 mr-2 bg-green-500"></span>
+           <svg class="w-6 h-6 z-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+               <path d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+           </svg>
+           <span class="z-10 ml-2">Prendre rendez-vous</span>
+          </a>
+      </div>
+      </div>
+      <div data-aos="fade-down-right" data-aos-duration="500" class="duration-container p-2 flex justify-center items-center my-8 z-10 sm:w-full md:w-4">
+        <div class="duration-content bg-gray-200 rounded-full text-gray-800 py-2 px-6 shadow">
+            <span>15 jours</span>
+        </div>
+    </div>
+      <!-- Step 2 -->
+      <div data-aos="fade-down" data-aos-duration="500" class="z-20 flowcard flowcard-large shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full md:w-2/3 lg:w-1/2">
+        <div class="flex md:flex-row flex-col w-full">
+          <div class="md:order-first order-last md:w-1/2 p-2">
+            <div class="step-indicator">2</div>
+            <h2 class="flowcard-title">2ème Étape</h2>
+            <p>Validation technique et administrative.</p>
+            <i class="fas fa-check-circle fa-2x mb-1"></i> <!-- Validation icon -->
+            <div class="rounded-b-lg text-lg">Examen détaillé du projet pour garantir la conformité aux normes en vigueur.<br>Validation des documents administratifs nécessaires.<br><br>Planning du chantier: Temps de préparation / fabrication de la commande</div>
+          </div>
+          <div class="md:order-last order-first md:w-1/2">
+            <img data-aos="fade-up" data-aos-duration="1500" src="step2.png" alt="Icon for Step 2" class="object-contain max-w-full h-auto">
+          </div>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div data-aos="fade-up-right" data-aos-duration="500" class="flowcard flowcard-large-down shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full md:w-2/3 lg:w-1/2">
+        <div class="flex flex-col md:flex-row w-full">
+          <div class="md:flex-1">
+            <img data-aos="fade-up" data-aos-duration="1500" src="step3.png" alt="Icon for Step 3" class="object-contain max-w-full h-auto">
+          </div>
+          <div class="md:flex-1 p-2">
+            <div class="step-indicator">3</div>
+            <h2 class="flowcard-title">3ème Étape</h2>
+            <p>Pose de votre projet.</p>
+            <i class="fas fa-wrench fa-2x mb-1"></i> <!-- Installation icon -->
+            <div class="text-left p-2 rounded-b-lg text-lg">Installation professionnelle et conforme aux normes.<br>Mise en service et vérification du fonctionnement optimal.</div>
+          </div>
+        </div>
+      </div>
+      <div data-aos="fade-up-right" data-aos-duration="500" class="duration-container sm:w-full md:w-4 p-2 flex justify-center items-center my-8">
+        <div class="duration-content bg-gray-200 rounded-full text-gray-800 py-2 px-6 shadow z-10">
+            <span>1 à 3 jours</span>
+        </div>
+    </div>
+      <!-- Step 4 -->
+      <div data-aos="fade-up" data-aos-duration="500" class="z-20 flowcard flowcard-medium-down shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
+        <div class="step-indicator">4</div>
+        <h2 class="flowcard-title">4ème Étape</h2>
+        <p>Fin de chantier</p>
+        <i class="fas fa-clipboard-check fa-2x mb-1"></i> <!-- Project completion icon -->
+        <div class="text-left p-2 rounded-b-lg text-lg">Rédaction du procès-verbal.<br>Début des garanties.</div>
+        
+          </div>
+      </section>    
+
+    <section id="projetsrealises" class="bg-white py-8">
+      <div data-aos="fade-up" data-aos-duration="1000" class="container mx-auto px-8">
+        <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+          Nos Réalisations
+        </h2>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
+        <p class="text-center text-xl text-gray-600 mb-8">
+          Découvrez quelques-uns des projets que nous avons réalisés.
+        </p>
+        <div id="projects" class="flex flex-wrap -mx-2 justify-center">
+
+          <!-- Additional Solar Projects as needed -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-right" style="background-image: url('projets/3e18a4c4-4450-4515-93d2-89428a4f2beb.jpg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Solaire Photovoltaïque</h3>
+                  <p class="text-sm">Calibration fine pour une performance solaire maximale.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solar Projects -->
+          <!-- Repeat the structure for solar projects, just change the image URLs and titles/descriptions -->
+          <!-- Example for solaire-1.jpeg -->
+          <div id="solar-project-0" class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background" style="background-image: url('projets/solaire-5.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Solaire Photovoltaïque</h3>
+                  <p class="text-sm">Installation de solutions solaires sur-mesure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Repeat for each solar project, adjusting the image URL and project details accordingly -->
+          <div id="solar-project-1" class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-left" style="background-image: url('projets/solaire-2.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Solaire Photovoltaïque</h3>
+                  <p class="text-sm">
+                    Production d'électricité de source solaire.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Climatisation Project -->
+          <div id="ac-project" class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-bottom" style="background-image: url('projets/clim-1.jpeg');"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Climatisation</h3>
+                  <p class="text-sm">Installation de climatisation écoénergétiques.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+             <!-- Isolation Project -->
+             <div class="project-card p-2 inline-block">
+              <div class="w-full p-2">
+                <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                  <div class="parallax-background adjust-bottom" style="background-image: url('projets/bf140f0c-549b-4365-a4a4-01bd10c63a2e.jpg');"></div>
+                  <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                    <h3 class="font-bold text-xl">Isolation</h3>
+                    <p class="text-sm">Amélioration de l'isolation des murs par l'extérieur.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          <!-- Heat Pump Project -->
+          <div class="project-card p-2 inline-block">
+            <div class="w-full p-2">
+              <div data-speed="0.3" class="project-parallax relative overflow-hidden bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out h-96">
+                <div class="parallax-background adjust-top" style="background-image: url('projets/heatpump-1.jpeg'); background-position: center 80%;"></div>
+                <div class="overlay absolute bottom-0 w-full p-4 bg-black bg-opacity-75 text-white">
+                  <h3 class="font-bold text-xl">Pompe à chaleur</h3>
+                  <p class="text-sm">Installation de pompes à chaleur haute performance.</p>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </section>             
+
+      <section id="localisation" class="bg-gray-100 py-8">
+        <div data-aos="zoom-in" data-aos-duration="1000" class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
+          <h2 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+            Notre agence
+          </h2>
+          <div class="w-full mb-4">
+            <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          </div>
+          <div class="w-full flex sm:flex-row justify-center pt-12 my-12 sm:my-4">
+            <iframe class="rounded-xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6436.720948017859!2d3.085026875222959!3d50.63779860559323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d5f88e628e81%3A0x5b73be532bdf3b0e!2s89%20Rue%20du%20Dr%20Jenner%2C%2059800%20Lille!5e0!3m2!1sfr!2sfr!4v1710325623440!5m2!1sfr!2sfr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </section>
+
+  </div>
+
+    <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-1.000000, -14.000000)" fill-rule="nonzero">
+          <g class="wave" fill="#f8fafc">
+            <path
+              d="M1440,84 C1383.555,64.3 1342.555,51.3 1317,45 C1259.5,30.824 1206.707,25.526 1169,22 C1129.711,18.326 1044.426,18.475 980,22 C954.25,23.409 922.25,26.742 884,32 C845.122,37.787 818.455,42.121 804,45 C776.833,50.41 728.136,61.77 713,65 C660.023,76.309 621.544,87.729 584,94 C517.525,105.104 484.525,106.438 429,108 C379.49,106.484 342.823,104.484 319,102 C278.571,97.783 231.737,88.736 205,84 C154.629,75.076 86.296,57.743 0,32 L0,0 L1440,0 L1440,84 Z"
+            ></path>
+          </g>
+          <g transform="translate(1.000000, 15.000000)" fill="#FFFFFF">
+            <g transform="translate(719.500000, 68.500000) rotate(-180.000000) translate(-719.500000, -68.500000) ">
+              <path d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496" opacity="0.100000001"></path>
+              <path
+                d="M100,104.708498 C277.413333,72.2345949 426.147877,52.5246657 546.203633,45.5787101 C666.259389,38.6327546 810.524845,41.7979068 979,55.0741668 C931.069965,56.122511 810.303266,74.8455141 616.699903,111.243176 C423.096539,147.640838 250.863238,145.462612 100,104.708498 Z"
+                opacity="0.100000001"
+              ></path>
+              <path d="M1046,51.6521276 C1130.83045,29.328812 1279.08318,17.607883 1439,40.1656806 L1439,120 C1271.17211,77.9435312 1140.17211,55.1609071 1046,51.6521276 Z" opacity="0.200000003"></path>
+            </g>
+          </g>
+        </g>
+      </g>
+    </svg>
+
+    <section data-aos="fade-right" data-aos-duration="1000" id="footer" class="container mx-auto text-center py-6 mb-12">
+      <h2 class="my-2 text-5xl font-bold leading-tight text-center text-white">
+        Discutons de votre projet
+      </h2>
+      <div class="w-full mb-4">
+        <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
+      <div class="my-4 text-3xl leading-tight">
+        Un expert Summum Bat vous accompagne
+      </div>
+      
+      <div class="justify-center items-center w-full flex">
+        <button onclick="call()"
+        class="sm:block md:hidden mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        Appeler
+      </button>
+    </div>
+    <div class="flex justify-center items-center space-x-2 my-4">
+      <div class="relative bg-white bg-opacity-25 rounded-full inline-flex items-center px-4 py-2">
+        <span class="absolute left-0 top-0 bottom-0 w-12 bg-blue-500 rounded-l-full"></span> <!-- Adjusted width for visual appearance -->
+        <img class="h-6 relative z-10" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEp0lEQVR4nO3dSYgdRRgA4I77vhKXqBHcQQ+iXhQxeNCTuOCCStwwjFuUeIqJAQ+iBE+uUQ+iCIJicEsU3OIWQRTEEDAiGsxixCWamE3F5JNiOiomceZNpru66tV3n5n6+3/Tr6vqr7+rqiiKoiiKoug47Ic78DHW4zcswJ3YM/b4+gouxQ+27QscGnuc2cNOmGl45mOH2GPOFg7Au3pzS+xxZwlH17ehXq0NPxt7/FnBGUN8XwxlHsbEjiMLmFg/PW2vG2LHkjxcj41GR7h1HRU7pmRh0igmY7O3y61rBHA5NmnGpJGMqW/hVKzTnNUYHzvOJISZNVZo3muxY00C5mjPdbHj7TSco12/4LDYcXcWXtG+ubHj7iysFMdVsWPvpHriFsPKsky/9YQsFs+c9j+CHYePxHVl7GvQKXg6ckJ+wsGxr0Nn4Hbx3RP7OnQGJsTOBr6KfR06A7tiTeSErI19Hfp56WRrvo99DToFN4nrjdjXoFMwFn9ETMiNsa9B5+ClSMlYjb1jx985uChSQmbEjr2TsCO+bjkZy7FH7Ng7K8IkcWLsmDsN+9QbSG34pNT/Di8pM1pKyFnNf8QygL3CRK3hZMyOHWdSMKXBZPyOY2LHmBTsMsKK9+GYFTu+JDVYjbIknDeJHV+S8HJDSZldan1HlpBxWNVQUqaN/keoD4SjaQ0lZCPOix1fcsLkDe83lJRVODF2jMnB4Q0W1C3HEbFjTA4u1pyFoRlB7BiTgycaTMo7YX8/doxJCW0zGpwwBs+GbYDYcSYFp9TLH015qqwC956UyZo1q0wce0/K4w0n5f5ex9TXsPMI+p/06u7YcSYlFEljacNJmRk7zqTg5IaPUwePlO+U3pJyRYMNBzZ7tDx99ZaU6Zr3TGik1vO/cb/Cwy0k5bmwoxk71pRWhp9vISnzsG/seJOA3fBeC0lZMNIGBHX92a14q17FXlcffr0XB1W5wf71Cm7TlvSyn1Kvxd01xAGlH0NXpCrTOcqiFpLyKy4cYixj6va23/Twe+dm1wIkbDy1dA5+U93Cdov+jjgbn47w94ay2oEqJ6G9H5Zpx+zNG104bhTPvIR+MOOqXOB4fKcdi/FYAyfCfsY1VS5w0na2nO2KV0ONQZUDnIBvpS8cwxvIYn2tvrcvk4fXs+gjiSND9wZ5CJPKqckvfBp8JP5SPkIx4bFVBrXDC+UjrADcnPR3i8G39bSx9tWmUGN2SJX4guRseVmU9OufDC7dPyQv06vUYVoL28Ft+azK6KUA66VvfZVZyepSaVtVZbin8oF0za8yfV3fg9I0pcqVwQnXaLwTqy0rsu8DZrBKso1t4e0VnhIvqPoBdscDuu2+qt/gknoXr2ve7NvqSoxv4UhELz7v+8OrBkt8BupdvJhCPVfpcvSfs/QvRkrGBpz+92CKf+Dc+tbRlj9x2b+GUGzjuN3kFkqPQr+Wq7cYQPG/tbxTG2oLEpJx7Tb+dDGMxAyM4qRyQ5YF2ZE2wc7HC9vR/CAsiZzW+uBzhwPDu97r+t81w1wOCV0mxsYee780/TwTt+FJfFi3XV9XV8CHYusJscdZFEVRFEVRVEP4Czo6iWQ6CRWgAAAAAElFTkSuQmCC">
+              <h1 class="text-xl ml-4 relative z-10">07 88 87 91 57</h1>
+      </div>
+    </div>
+    
+      <div class="mt-10">  
+        <h3 class="w-full my-2 text-3xl font-bold leading-tight text-center text-white">
+          Obtenir un rendez-vous
+        </h3>
+        <div class="w-full mb-4">
+          <div class="h-1 mx-auto bg-white w-1/6 opacity-35 my-0 py-0 rounded-t"></div>
+        </div>
+        <!-- button pour prendre rendez vous -->
+        <a target="_blank" href="https://booking.setmore.com/scheduleappointment/8cf84e45-cc2d-4329-9ad7-a7e2d3d9e25f/services/bd1bd069-6008-44df-ae6e-cb83c9c72e2e?source=easyshare"
+        class="rounded-md relative inline-flex items-center gap-2 h-12 w-auto px-6 py-3 text-xl font-bold text-white bg-white bg-opacity-25 hover:bg-green-600 rounded-md shadow transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+         <span class="rounded-l-md absolute left-0 top-0 bottom-0 w-14 mr-2 bg-green-500"></span>
+         <svg class="w-6 h-6 z-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor">
+             <path d="M3 9H21M7 3V5M17 3V5M6 12H8M11 12H13M16 12H18M6 15H8M11 15H13M16 15H18M6 18H8M11 18H13M16 18H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+         </svg>
+         <span class="z-10 ml-2">Prendre un rendez-vous</span>
+        </a>
+      </div>
+    </section>
+    <div class="bg-white text-xs">
+      <a href="https://www.hostnjoy.com">HostnJoy</a>
+    </div>
+  </div>
+  </body>
+</html>

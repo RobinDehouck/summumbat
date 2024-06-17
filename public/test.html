@@ -1,98 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="test.js" defer></script>
+    <link rel="stylesheet" href="test.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalog</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplecart/3.0.6/simplecart.min.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
 </head>
-<body>
-    <header>
-        <h1>Solar Panels Catalog</h1>
-    </header>
-    <main>
-        <section class="product">
-            <h2>Solar Panel Model A</h2>
-            <p>Description of Solar Panel Model A</p>
-            <p>$199.99</p>
-            <button id="checkout-button-1" class="checkout-button" data-price-id="price_1PRGj6GzKuYtEoOEUbujzkNM">Buy Now</button>
-        </section>
-        <!-- Add more products as needed -->
-    </main>
-    <footer>
-        <form id="payment-form">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-            <label for="address">Address:</label>
-            <textarea name="address" id="address" required></textarea>
-            <label for="phone">Phone:</label>
-            <input type="tel" name="phone" id="phone" required>
-            <input type="hidden" name="product_id" id="product_id">
-            <button type="submit">Submit</button>
-        </form>
-    </footer>
-    <div class="simpleCart_items"></div>
-    <div class="simpleCart_total"></div>
-    <a href="javascript:;" class="simpleCart_checkout">Checkout</a>
-    <script>
-        var stripe = Stripe('pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq');
+<body class="bg-gray-100">
+    <nav id="header" class="fixed w-full z-30 top-0 text-white bg-white">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+          <div class="pl-4 flex items-center">
+            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                <div class="flex items-center relative">
+                    <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="h-16 w-16">
+                    <img id="logo-letter" src="summum-letters-black.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="w-60 -ml-2"> 
+                    <div class="flex items-center"> <!-- Ensure this div is also a flex container -->
+                    </div>
+                  </div>            
+                </a>
+              </div>
+              <div class="block lg:hidden pr-4">
+                <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <title>Menu</title>
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                  </svg>
+                </button>
+              </div>
+              <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                </ul>
+                <button
+                onclick="call()"
+                  id="navAction"
+                  class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                >
+                  Appeler
+                </button>
+              </div>
+            </div>
+          </nav>
+        <main class="relative -t-12 lg:mt-24">
+            <div class="bg-white">
+                <div class="mx-auto max-w-2xl py-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                    <h2 class="sr-only">Products</h2>
+                    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                        <div class="group product" data-product-id="price_1PRGj6GzKuYtEoOEUbujzkNM" data-price-id="price_1PRGj6GzKuYtEoOEUbujzkNM" data-product-name="Solar Panel Model A" data-product-price="199.99">
+                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                                <img src="https://www.chocdiscount.com/114260-thickbox_default/panneau-solaire-dmegc-500w-cadre-noir-bifacial-n-type-dm500m10rt-b60hbt.jpg" alt="Solar Panel Model A" class="h-full w-full object-cover object-center group-hover:opacity-75">
+                            </div>
+                            <h3 class="mt-4 text-sm text-gray-700">Solar Panel Model A</h3>
+                            <p class="mt-1 text-lg font-medium text-gray-900">$199.99</p>
+                            <button class="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">View Details</button>
+                        </div>
+                        <!-- Add more products as needed following the same structure -->
+                    </div>
+                </div>
+            </div>
         
-        var checkoutButton = document.getElementById('checkout-button-1');
-        var paymentForm = document.getElementById('payment-form');
-    
-        checkoutButton.addEventListener('click', function () {
-            var priceId = checkoutButton.getAttribute('data-price-id');
-            document.getElementById('product_id').value = priceId;
-    
-            console.log('Initiating fetch request to /api/create-checkout-session');
-            console.log('Price ID:', priceId);
-            console.log('Email:', document.getElementById('email').value);
-            console.log('Address:', document.getElementById('address').value);
-            console.log('Phone:', document.getElementById('phone').value);
-    
-            fetch('/api/create-checkout-session', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    priceId: priceId,
-                    email: document.getElementById('email').value,
-                    address: document.getElementById('address').value,
-                    phone: document.getElementById('phone').value,
-                }),
-            })
-            .then(function (response) {
-                console.log('Fetch response:', response);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(function (session) {
-                console.log('Session received:', session);
-                if (!session.id) {
-                    throw new Error('Session ID not returned');
-                }
-                return stripe.redirectToCheckout({ sessionId: session.id });
-            })
-            .then(function (result) {
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            })
-            .catch(function (error) {
-                console.error('Error:', error);
+            <div id="product-overview" class="bg-white hidden">
+                <div class="pt-6">
+                    <nav aria-label="Breadcrumb">
+                        <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                            <li>
+                                <div class="flex items-center">
+                                    <a href="/" class="mr-2 text-sm font-medium text-gray-900">Home</a>
+                                    <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" class="h-5 w-4 text-gray-300">
+                                        <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                                    </svg>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <a href="/catalog" class="mr-2 text-sm font-medium text-gray-900">Catalog</a>
+                                    <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true" class="h-5 w-4 text-gray-300">
+                                        <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                                    </svg>
+                                </div>
+                            </li>
+                            <li class="text-sm">
+                                <a href="#" aria-current="page" class="font-medium text-gray-500 hover:text-gray-600" id="breadcrumb-product-name">Product Overview</a>
+                            </li>
+                        </ol>
+                    </nav>
+        
+                    <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
+                        <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+                            <img id="product-image-1" src="" alt="Product Image 1" class="h-full w-full object-cover object-center cursor-pointer">
+                        </div>
+                        <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+                            <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+                                <img id="product-image-2" src="" alt="Product Image 2" class="h-full w-full object-cover object-center cursor-pointer">
+                            </div>
+                            <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
+                                <img id="product-image-3" src="" alt="Product Image 3" class="h-full w-full object-cover object-center cursor-pointer">
+                            </div>
+                        </div>
+                        <div class="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
+                            <img id="product-image-4" src="" alt="Product Image 4" class="h-full w-full object-cover object-center cursor-pointer">
+                        </div>
+                    </div>
+        
+                    <div class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+                        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                            <h1 id="product-title" class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Product Title</h1>
+                        </div>
+                        <div class="mt-4 lg:row-span-3 lg:mt-0">
+                            <h2 class="sr-only">Product information</h2>
+                            <p id="product-price" class="text-3xl tracking-tight text-gray-900">$0.00</p>
+                            <form id="payment-form" class="space-y-6 mt-10">
+                                <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+                                    <div>
+                                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                        <input type="email" name="email" id="email" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                                        <input type="tel" name="phone" id="phone" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+                                    <textarea name="address" id="address" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
+                                </div>
+                                <input type="hidden" name="product_id" id="product_id">
+                                <div class="pt-5">
+                                    <div class="flex justify-end">
+                                        <button type="submit" id="checkout-button-1" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                            Checkout
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
+                            <div>
+                                <h3 class="sr-only">Description</h3>
+                                <div class="space-y-6">
+                                    <p id="product-description" class="text-base text-gray-900">Product description goes here.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- checkout -->
+                <div class="fixed inset-x-0 bottom-0 bg-white border-t border-gray-200 z-50">
+                    <div class="max-w-2xl mx-auto py-4 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+                        <div class="flex justify-end">
+                            <button id="checkout-button-1" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        
+            <!-- Overlay for full view images -->
+            <div class="overlay" id="image-overlay">
+                <span class="close" id="close-overlay">&times;</span>
+                <span class="nav left" id="prev-image">&#10094;</span>
+                <img src="" alt="Full View Image" id="full-image">
+                <span class="nav right" id="next-image">&#10095;</span>
+            </div>
+        </main>
+        
+        <script>
+document.addEventListener('DOMContentLoaded', function () {
+    var stripe = Stripe('pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq');
+    var currentImageIndex = 0;
+    var productImages = [];
+
+    function openOverlay(index) {
+        currentImageIndex = index;
+        document.getElementById('full-image').src = productImages[index];
+        document.getElementById('image-overlay').style.display = 'flex';
+    }
+
+    function closeOverlay() {
+        document.getElementById('image-overlay').style.display = 'none';
+    }
+
+    function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % productImages.length;
+        document.getElementById('full-image').src = productImages[currentImageIndex];
+    }
+
+    function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+        document.getElementById('full-image').src = productImages[currentImageIndex];
+    }
+
+    document.getElementById('close-overlay').addEventListener('click', closeOverlay);
+    document.getElementById('next-image').addEventListener('click', showNextImage);
+    document.getElementById('prev-image').addEventListener('click', showPrevImage);
+
+    document.querySelectorAll('.product button').forEach(button => {
+        button.addEventListener('click', event => {
+            const productDiv = event.target.closest('.product');
+            const productId = productDiv.getAttribute('data-product-id');
+            const productName = productDiv.getAttribute('data-product-name');
+            const productPrice = productDiv.getAttribute('data-product-price');
+            productImages = [
+                'https://www.chocdiscount.com/114260-thickbox_default/panneau-solaire-dmegc-500w-cadre-noir-bifacial-n-type-dm500m10rt-b60hbt.jpg',
+                'https://www.monkitsolaire.fr/29386-product_default/kit-solaire-autoconsommation-pas-cher-8-panneaux-amerisolar-3480w.jpg', 
+                'https://www.monkitsolaire.fr/29387-large_default/kit-solaire-autoconsommation-pas-cher-8-panneaux-amerisolar-3480w.jpg', 
+                'https://www.monkitsolaire.fr/29383-large_default/kit-solaire-autoconsommation-pas-cher-8-panneaux-amerisolar-3480w.jpg' 
+            ];
+            const productDescription = 'This is a description for ' + productName + '.';
+
+            document.getElementById('product-title').innerText = productName;
+            document.getElementById('product-price').innerText = '$' + productPrice;
+            document.getElementById('product-image-1').src = productImages[0];
+            document.getElementById('product-image-2').src = productImages[1];
+            document.getElementById('product-image-3').src = productImages[2];
+            document.getElementById('product-image-4').src = productImages[3];
+            document.getElementById('product-description').innerText = productDescription;
+            document.getElementById('breadcrumb-product-name').innerText = productName;
+            document.getElementById('product_id').value = productId;
+
+            document.querySelector('.grid').classList.add('hidden');
+            document.getElementById('product-overview').classList.remove('hidden');
+
+            document.querySelectorAll('#product-overview img').forEach((img, index) => {
+                img.addEventListener('click', () => openOverlay(index));
             });
         });
-    
-        paymentForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            checkoutButton.click();
+    });
+
+    var checkoutButton = document.getElementById('checkout-button-1');
+    var paymentForm = document.getElementById('payment-form');
+
+    paymentForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const priceId = document.getElementById('product_id').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value;
+
+        fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                priceId: priceId,
+                email: email,
+                address: address,
+                phone: phone,
+            }),
+        })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(function (session) {
+            if (!session.id) {
+                throw new Error('Session ID not returned');
+            }
+            return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+            if (result.error) {
+                alert(result.error.message);
+            }
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
         });
-    </script>
-    
-</body>
-</html>
+    });
+});
+
+        </script>
+    </body>
+</html>        
