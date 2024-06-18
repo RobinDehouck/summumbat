@@ -82,6 +82,46 @@ app.post('/webhook', async (req: Request, res: Response) => {
     res.status(200).json({ received: true });
 });
 
+app.get('/api/products', async (req: Request, res: Response) => {
+    const { data, error } = await supabase.from('products').select('*');
+    if (error) {
+        console.error('Error fetching products:', error.message);
+        return res.status(500).json({ error: 'Error fetching products' });
+    }
+    res.status(200).json(data);
+});
+
+app.post('/api/products', async (req: Request, res: Response) => {
+    const { title, description, price, frais_de_port_hdf, frais_de_port_non_hdf, image1_url, image2_url, image3_url, image4_url, video_url, template_url, ison, stripe_id } = req.body;
+
+    const { data, error } = await supabase.from('products').insert([
+        { title, description, price, frais_de_port_hdf, frais_de_port_non_hdf, image1_url, image2_url, image3_url, image4_url, video_url, template_url, ison, stripe_id }
+    ]);
+
+    if (error) {
+        console.error('Error creating product:', error.message);
+        return res.status(500).json({ error: 'Error creating product' });
+    }
+
+    res.status(201).json(data);
+});
+
+app.put('/api/products/:id', async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { title, description, price, frais_de_port_hdf, frais_de_port_non_hdf, image1_url, image2_url, image3_url, image4_url, video_url, template_url, ison, stripe_id } = req.body;
+
+    const { data, error } = await supabase.from('products').update({ 
+        title, description, price, frais_de_port_hdf, frais_de_port_non_hdf, image1_url, image2_url, image3_url, image4_url, video_url, template_url, ison, stripe_id 
+    }).eq('id', id);
+
+    if (error) {
+        console.error('Error updating product:', error.message);
+        return res.status(500).json({ error: 'Error updating product' });
+    }
+
+    res.status(200).json(data);
+});
+
 app.get('/:page', (req, res, next) => {
     const page = req.params.page;
     const filePath = path.join(path.resolve(), 'public', `${page}.html`);

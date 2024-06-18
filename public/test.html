@@ -16,8 +16,8 @@
           <div class="pl-4 flex items-center">
             <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
                 <div class="flex items-center relative">
-                    <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="h-16 w-16">
-                    <img id="logo-letter" src="summum-letters-black.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" alt="logo" class="w-60 -ml-2"> 
+                    <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" class="h-16 w-16">
+                    <img id="logo-letter" src="summum-letters-black.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" class="w-60 -ml-2"> 
                     <div class="flex items-center"> <!-- Ensure this div is also a flex container -->
                     </div>
                   </div>            
@@ -44,25 +44,33 @@
               </div>
             </div>
           </nav>
-        <main class="relative -t-12 lg:mt-24">
-            <div class="bg-white">
+        <main class="relative mt-20 lg:mt-24">
+            <div class="">
                 <div class="mx-auto max-w-2xl py-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h2 class="sr-only">Products</h2>
-                    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                        <div class="group product" data-product-id="price_1PRGj6GzKuYtEoOEUbujzkNM" data-price-id="price_1PRGj6GzKuYtEoOEUbujzkNM" data-product-name="Solar Panel Model A" data-product-price="199.99">
-                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                                <img src="https://www.chocdiscount.com/114260-thickbox_default/panneau-solaire-dmegc-500w-cadre-noir-bifacial-n-type-dm500m10rt-b60hbt.jpg" alt="Solar Panel Model A" class="h-full w-full object-cover object-center group-hover:opacity-75">
+                        <!-- display the vid in repeat -->
+                        <div id="video-container" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 relative">
+                                <img src="/img_solarpanels/4 x 445w/PACK JA SOLAR (1).png" alt="Background image" class="h-full w-full object-cover object-center">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -47%); width: 60%; height: 63%;">
+                                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
+                                        <source src="/img_solarpanels/4 x 445w/PACK JA SOLAR (2).mp4" type="video/mp4">
+                                    </video>
+                                </div>
                             </div>
-                            <h3 class="mt-4 text-sm text-gray-700">Solar Panel Model A</h3>
-                            <p class="mt-1 text-lg font-medium text-gray-900">$199.99</p>
-                            <button class="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">View Details</button>
                         </div>
-                        <!-- Add more products as needed following the same structure -->
+                        
+                        
+                    <div id="products-list" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                        <!-- public/img_solarpanels/4 x 445w/PACK JA SOLAR (1).mp4 -->
+
+
+                        <!-- Products will be dynamically inserted here -->
                     </div>
                 </div>
             </div>
         
-            <div id="product-overview" class="bg-white hidden">
+            <div id="product-overview" class=" hidden">
                 <div class="pt-6">
                     <nav aria-label="Breadcrumb">
                         <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -111,7 +119,46 @@
                         </div>
                         <div class="mt-4 lg:row-span-3 lg:mt-0">
                             <h2 class="sr-only">Product information</h2>
-                            <p id="product-price" class="text-3xl tracking-tight text-gray-900">$0.00</p>
+                            <p id="product-price" class="text-3xl tracking-tight text-gray-900">€0.00</p>
+                            
+                            <!-- Shipping and installation options -->
+                            <div class="mt-4">
+                                <h3 class="text-sm font-medium text-gray-900">Shipping</h3>
+                                <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-3">
+                                    <label class="shipping-option group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 transition ease-in-out duration-150 ring-2 ring-indigo-500 bg-indigo-50">
+                                        <input type="radio" name="shipping" value="click_collect" class="sr-only" checked>
+                                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                                        Click & Collect
+                                    </label>
+                                    <label class="shipping-option group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 transition ease-in-out duration-150">
+                                        <input type="radio" name="shipping" value="hdf" class="sr-only">
+                                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                                        Hauts de France
+                                    </label>
+                                    <label class="shipping-option group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 transition ease-in-out duration-150">
+                                        <input type="radio" name="shipping" value="non_hdf" class="sr-only">
+                                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                                        Non Hauts de France
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h3 class="text-sm font-medium text-gray-900">Installation</h3>
+                                <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+                                    <label class="installation-option group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 transition ease-in-out duration-150 ring-2 ring-indigo-500 bg-indigo-50">
+                                        <input type="radio" name="installation" value="no_installation" class="sr-only" checked>
+                                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                                        Ø
+                                    </label>
+                                    <label class="installation-option group relative flex cursor-pointer items-center justify-center rounded-md border bg-white px-4 py-3 text-sm font-medium uppercase text-gray-900 shadow-sm hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 transition ease-in-out duration-150">
+                                        <input type="radio" name="installation" value="installation" class="sr-only">
+                                        <span class="pointer-events-none absolute -inset-px rounded-md" aria-hidden="true"></span>
+                                        Installation
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            
                             <form id="payment-form" class="space-y-6 mt-10">
                                 <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                                     <div>
@@ -128,6 +175,7 @@
                                     <textarea name="address" id="address" required class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"></textarea>
                                 </div>
                                 <input type="hidden" name="product_id" id="product_id">
+                                <input type="hidden" name="stripe_id" id="stripe_id">
                                 <div class="pt-5">
                                     <div class="flex justify-end">
                                         <button type="submit" id="checkout-button-1" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
@@ -165,7 +213,7 @@
                 <span class="close" id="close-overlay">&times;</span>
                 <span class="nav left" id="prev-image">&#10094;</span>
                 <img src="" alt="Full View Image" id="full-image">
-                <span class="nav right" id="next-image">&#10095;</span>
+                <span class="nav right" id="next-image">&#10095;"></span>
             </div>
         </main>
         
@@ -174,6 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var stripe = Stripe('pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq');
     var currentImageIndex = 0;
     var productImages = [];
+    var basePrice = 0;
 
     function openOverlay(index) {
         currentImageIndex = index;
@@ -199,45 +248,119 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('next-image').addEventListener('click', showNextImage);
     document.getElementById('prev-image').addEventListener('click', showPrevImage);
 
-    document.querySelectorAll('.product button').forEach(button => {
-        button.addEventListener('click', event => {
-            const productDiv = event.target.closest('.product');
-            const productId = productDiv.getAttribute('data-product-id');
-            const productName = productDiv.getAttribute('data-product-name');
-            const productPrice = productDiv.getAttribute('data-product-price');
-            productImages = [
-                'https://www.chocdiscount.com/114260-thickbox_default/panneau-solaire-dmegc-500w-cadre-noir-bifacial-n-type-dm500m10rt-b60hbt.jpg',
-                'https://www.monkitsolaire.fr/29386-product_default/kit-solaire-autoconsommation-pas-cher-8-panneaux-amerisolar-3480w.jpg', 
-                'https://www.monkitsolaire.fr/29387-large_default/kit-solaire-autoconsommation-pas-cher-8-panneaux-amerisolar-3480w.jpg', 
-                'https://www.monkitsolaire.fr/29383-large_default/kit-solaire-autoconsommation-pas-cher-8-panneaux-amerisolar-3480w.jpg' 
+    function renderProducts(products) {
+        const productsListElement = document.getElementById('products-list');
+        productsListElement.innerHTML = '';
+        products.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.classList.add('group', 'product');
+            productElement.dataset.productId = product.id;
+            productElement.dataset.priceId = product.stripe_id; // Use stripe_id for price_id
+            productElement.dataset.productName = product.title;
+            productElement.dataset.productPrice = product.price.toFixed(2);
+
+            productElement.innerHTML = `
+                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+                    <img src="${product.image1_url}" alt="${product.title}" class="h-full w-full object-cover object-center group-hover:opacity-75">
+                </div>
+                <h3 class="mt-4 text-sm text-gray-700">${product.title}</h3>
+                <p class="mt-1 text-lg font-medium text-gray-900">€${product.price.toFixed(2)}</p>
+                <button class="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">View Details</button>
+            `;
+            productsListElement.appendChild(productElement);
+
+            // Fix product reference here
+            const productImagesList = [
+                product.image1_url,
+                product.image2_url,
+                product.image3_url,
+                product.image4_url
             ];
-            const productDescription = 'This is a description for ' + productName + '.';
 
-            document.getElementById('product-title').innerText = productName;
-            document.getElementById('product-price').innerText = '$' + productPrice;
-            document.getElementById('product-image-1').src = productImages[0];
-            document.getElementById('product-image-2').src = productImages[1];
-            document.getElementById('product-image-3').src = productImages[2];
-            document.getElementById('product-image-4').src = productImages[3];
-            document.getElementById('product-description').innerText = productDescription;
-            document.getElementById('breadcrumb-product-name').innerText = productName;
-            document.getElementById('product_id').value = productId;
+            productElement.querySelector('button').addEventListener('click', () => {
+                basePrice = product.price; // Set base price
+                document.getElementById('product-title').innerText = product.title;
+                document.getElementById('product-price').innerText = '€' + basePrice.toFixed(2);
+                document.getElementById('product-image-1').src = productImagesList[0];
+                document.getElementById('product-image-2').src = productImagesList[1];
+                document.getElementById('product-image-3').src = productImagesList[2];
+                document.getElementById('product-image-4').src = productImagesList[3];
+                document.getElementById('product-description').innerText = product.description;
+                document.getElementById('breadcrumb-product-name').innerText = product.title;
+                document.getElementById('product_id').value = product.id;
+                document.getElementById('stripe_id').value = product.stripe_id;
 
-            document.querySelector('.grid').classList.add('hidden');
-            document.getElementById('product-overview').classList.remove('hidden');
+                document.querySelector('.grid').classList.add('hidden');
+                document.getElementById('product-overview').classList.remove('hidden');
 
-            document.querySelectorAll('#product-overview img').forEach((img, index) => {
-                img.addEventListener('click', () => openOverlay(index));
+                productImages = productImagesList;
+                document.querySelectorAll('#product-overview img').forEach((img, index) => {
+                    img.addEventListener('click', () => openOverlay(index));
+                });
             });
         });
+    }
+
+    async function fetchProducts() {
+        const response = await fetch('/api/products');
+        const products = await response.json();
+        const activeProducts = products.filter(product => product.ison);
+        renderProducts(activeProducts);
+    }
+
+    document.querySelectorAll('.shipping-option input').forEach((input) => {
+    input.addEventListener('change', (event) => {
+        document.querySelectorAll('.shipping-option').forEach((label) => {
+            label.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+        });
+        event.target.closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+        calculateTotalPrice();
     });
+});
+
+document.querySelectorAll('.installation-option input').forEach((input) => {
+    input.addEventListener('change', (event) => {
+        document.querySelectorAll('.installation-option').forEach((label) => {
+            label.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+        });
+        event.target.closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+        calculateTotalPrice();
+    });
+});
+
+function calculateTotalPrice() {
+    const shipping = document.querySelector('input[name="shipping"]:checked').value;
+    const installation = document.querySelector('input[name="installation"]:checked').value;
+    let totalPrice = basePrice;
+
+    if (shipping === 'hdf') {
+        totalPrice += 250;
+    } else if (shipping === 'non_hdf') {
+        totalPrice += 500;
+    }
+
+    if (installation === 'installation') {
+        totalPrice *= 1.25;
+    }
+
+    document.getElementById('product-price').innerText = '€' + totalPrice.toFixed(2);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize with default checked styles
+    document.querySelector('.shipping-option input:checked').closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+    document.querySelector('.installation-option input:checked').closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+});
+
+
+    fetchProducts();
 
     var checkoutButton = document.getElementById('checkout-button-1');
     var paymentForm = document.getElementById('payment-form');
 
     paymentForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        const priceId = document.getElementById('product_id').value;
+        const priceId = document.getElementById('stripe_id').value;
         const email = document.getElementById('email').value;
         const address = document.getElementById('address').value;
         const phone = document.getElementById('phone').value;
@@ -279,4 +402,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
         </script>
     </body>
-</html>        
+</html>

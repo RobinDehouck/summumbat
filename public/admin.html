@@ -1,162 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard</title>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
-  />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
 </head>
 <body class="bg-gray-100">
-  <div class="max-w-6xl mx-auto py-8">
-    <h1 class="text-4xl font-bold text-center mb-10">Admin Summum Bat</h1>
-
-    <!-- Tabs -->
-    <div class="mb-4 border-b border-gray-200 text-center justify-center items-center flex">
-      <nav class="flex space-x-4 p-2" id="tabs">
-        <button
-          class="tab-btn py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 active"
-          data-target="products-section"
-        >
-          Catalogue de produits
-        </button>
-        <button
-          class="bg-green-500 text-white tab-btn py-2 px-4 text-sm font-medium rounded-lg border border-gray-200 hover:bg-green-600 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700"
-          data-target="create-product-section"
-        >
-          Créer un produit
-        </button>
-      </nav>
-    </div>
-
-    <div id="create-product-section" class="hidden">
-      <h2 class="text-2xl font-semibold mb-5">Créer Produit</h2>
-      <form id="create-product-form" class="space-y-4">
-        <div class="flex flex-col">
-          <label for="create-name" class="font-medium">Nom:</label>
-          <input type="text" id="create-name" class="mt-1 p-2 border rounded" />
+    <div class="max-w-6xl mx-auto py-8">
+        <h1 class="text-4xl font-bold text-center mb-10">Admin Summum Bat</h1>
+        <div class="mb-4 border-b border-gray-200 text-center justify-center items-center flex">
+            <nav class="flex space-x-4 p-2" id="tabs">
+                <button class="tab-btn py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700 active" data-target="products-section">
+                    Catalogue de produits
+                </button>
+                <button class="bg-green-500 text-white tab-btn py-2 px-4 text-sm font-medium rounded-lg border border-gray-200 hover:bg-green-600 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-blue-700" data-target="create-product-section">
+                    Créer un produit
+                </button>
+            </nav>
         </div>
-        <div class="flex flex-col">
-          <label for="create-description" class="font-medium">Description:</label>
-          <input type="text" id="create-description" class="mt-1 p-2 border rounded" />
+        <div id="create-product-section" class="hidden">
+            <h2 class="text-2xl font-semibold mb-5">Créer Produit</h2>
+            <form id="create-product-form" class="space-y-4">
+                <!-- Existing fields -->
+                <div class="flex flex-col">
+                    <label for="create-name" class="font-medium">Nom:</label>
+                    <input type="text" id="create-name" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-description" class="font-medium">Description:</label>
+                    <input type="text" id="create-description" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-price" class="font-medium">Prix (euro):</label>
+                    <input type="number" step="0.01" id="create-price" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-frais-de-port-hdf" class="font-medium">Frais de Port HDF:</label>
+                    <input type="number" step="0.01" id="create-frais-de-port-hdf" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-frais-de-port-non-hdf" class="font-medium">Frais de Port Non HDF:</label>
+                    <input type="number" step="0.01" id="create-frais-de-port-non-hdf" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-image1-url" class="font-medium">Image 1 URL:</label>
+                    <input type="text" id="create-image1-url" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-image2-url" class="font-medium">Image 2 URL:</label>
+                    <input type="text" id="create-image2-url" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-image3-url" class="font-medium">Image 3 URL:</label>
+                    <input type="text" id="create-image3-url" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-image4-url" class="font-medium">Image 4 URL:</label>
+                    <input type="text" id="create-image4-url" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-video-url" class="font-medium">Video URL:</label>
+                    <input type="text" id="create-video-url" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-template-url" class="font-medium">Template URL:</label>
+                    <input type="text" id="create-template-url" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-isOn" class="font-medium">Actif:</label>
+                    <input type="checkbox" id="create-isOn" class="mt-1 p-2 border rounded" />
+                </div>
+                <div class="flex flex-col">
+                    <label for="create-stripe-id" class="font-medium">Stripe ID:</label>
+                    <input type="text" id="create-stripe-id" class="mt-1 p-2 border rounded" />
+                </div>
+                <button type="submit" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
+                    Valider
+                </button>
+            </form>
         </div>
-        <div class="flex flex-col">
-          <label for="create-price" class="font-medium">Prix (euro):</label>
-          <input type="number" step="0.01" id="create-price" class="mt-1 p-2 border rounded" />
-        </div>
-        <div class="flex flex-col">
-          <label for="create-frais-de-port-hdf" class="font-medium">Frais de Port HDF:</label>
-          <input type="number" step="0.01" id="create-frais-de-port-hdf" class="mt-1 p-2 border rounded" />
-        </div>
-        <div class="flex flex-col">
-          <label for="create-frais-de-port-non-hdf" class="font-medium">Frais de Port Non HDF:</label>
-          <input type="number" step="0.01" id="create-frais-de-port-non-hdf" class="mt-1 p-2 border rounded" />
-        </div>
-        <div class="flex flex-col">
-          <label for="create-image1-url" class="font-medium">Image 1 URL:</label>
-          <input type="text" id="create-image1-url" class="mt-1 p-2 border rounded" />
-        </div>
-        <div class="flex flex-col">
-          <label for="create-image2-url" class="font-medium">Image 2 URL:</label>
-          <input type="text" id="create-image2-url" class="mt-1 p-2 border rounded" />
-        </div>
-        <div class="flex flex-col">
-          <label for="create-image3-url" class="font-medium">Image 3 URL:</label>
-          <input type="text" id="create-image3-url" class="mt-1 p-2 border rounded" />
-        </div>
-        <div class="flex flex-col">
-          <label for="create-image4-url" class="font-medium">Image 4 URL:</label>
-          <input type="text" id="create-image4-url" class="mt-1 p-2 border rounded" />
-        </div>
-        <button type="submit" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">
-          Valider
-        </button>
-      </form>
-    </div>
-
-    <div id="products-section">
-      <h2 class="text-xl font-semibold mb-4">Catalogue de produits</h2>
-      <p class="p-2 bg-yellow-200 rounded-full mb-2"> 💡 Pour retirer un produit, ajustez son stock à 0.</p>
-      <div id="products-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Products will be listed here -->
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const productListElement = document.getElementById('products-list');
-      const createProductForm = document.getElementById('create-product-form');
-      const tabs = document.querySelectorAll('.tab-btn');
-      const sections = document.querySelectorAll('div[id$="-section"]');
-
-      // Function to switch between tabs
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          sections.forEach(section => section.classList.add('hidden'));
-          document.getElementById(tab.getAttribute('data-target')).classList.remove('hidden');
-          tabs.forEach(t => t.classList.remove('active', 'bg-white', 'text-gray-900'));
-          tab.classList.add('active', 'bg-white', 'text-gray-900');
-        });
-      });
-
-      async function fetchProducts() {
-        const response = await fetch('/api/products');
-        const products = await response.json();
-        renderProducts(products);
-      }
-
-      function renderProducts(products) {
-        productListElement.innerHTML = '';
-        products.forEach(product => {
-          const productElement = document.createElement('div');
-          productElement.classList.add('product');
-          productElement.innerHTML = `
-            <div class="p-4 bg-white rounded shadow">
-              <h3 class="text-xl font-bold">${product.title}</h3>
-              <p>${product.description}</p>
-              <p>Price: €${product.price.toFixed(2)}</p>
-              <p>Frais de port HDF: €${product.frais_de_port_hdf.toFixed(2)}</p>
-              <p>Frais de port Non HDF: €${product.frais_de_port_non_hdf.toFixed(2)}</p>
-              <img src="${product.image1_url}" alt="${product.title}" class="w-full h-32 object-cover">
+        <div id="products-section">
+            <h2 class="text-xl font-semibold mb-4">Catalogue de produits</h2>
+            <div id="products-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Products will be listed here -->
             </div>
-          `;
-          productListElement.appendChild(productElement);
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const productListElement = document.getElementById("products-list");
+            const createProductForm = document.getElementById("create-product-form");
+            const tabs = document.querySelectorAll(".tab-btn");
+            const sections = document.querySelectorAll('div[id$="-section"]');
+            let editingProductId = null;
+
+            tabs.forEach((tab) => {
+                tab.addEventListener("click", () => {
+                    sections.forEach((section) => section.classList.add("hidden"));
+                    document.getElementById(tab.getAttribute("data-target")).classList.remove("hidden");
+                    tabs.forEach((t) => t.classList.remove("active", "bg-white", "text-gray-900"));
+                    tab.classList.add("active", "bg-white", "text-gray-900");
+                });
+            });
+
+            async function fetchProducts() {
+                const response = await fetch("/api/products");
+                const products = await response.json();
+                renderProducts(products);
+            }
+
+            function renderProducts(products) {
+                productListElement.innerHTML = "";
+                products.forEach((product) => {
+                    const productElement = document.createElement("div");
+                    productElement.classList.add("product");
+                    productElement.innerHTML = `
+                    <div class="p-4 bg-white rounded shadow">
+                        <h3 class="text-xl font-bold">${product.title}</h3>
+                        <p>${product.description}</p>
+                        <p>Price: €${product.price.toFixed(2)}</p>
+                        <p>Frais de port HDF: €${product.frais_de_port_hdf.toFixed(2)}</p>
+                        <p>Frais de port Non HDF: €${product.frais_de_port_non_hdf.toFixed(2)}</p>
+                        <p>Actif: ${product.ison ? "Oui" : "Non"}</p>
+                        <p>Stripe ID: ${product.stripe_id}</p>
+                        <img src="${product.image1_url}" alt="${product.title}" class="w-full h-32 object-cover">
+                        <button class="edit-button bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mt-2" data-id="${product.id}">Modifier</button>
+                    </div>`;
+                    productListElement.appendChild(productElement);
+                });
+                setupEditButtons(products);
+            }
+
+            function setupEditButtons(products) {
+                const editButtons = document.querySelectorAll(".edit-button");
+                editButtons.forEach((button) => {
+                    button.addEventListener("click", (event) => {
+                        const productId = event.target.dataset.id;
+                        const product = products.find((p) => p.id == productId);
+                        fillEditForm(product);
+                    });
+                });
+            }
+
+            function fillEditForm(product) {
+                editingProductId = product.id;
+                document.getElementById("create-name").value = product.title;
+                document.getElementById("create-description").value = product.description;
+                document.getElementById("create-price").value = product.price;
+                document.getElementById("create-frais-de-port-hdf").value = product.frais_de_port_hdf;
+                document.getElementById("create-frais-de-port-non-hdf").value = product.frais_de_port_non_hdf;
+                document.getElementById("create-image1-url").value = product.image1_url;
+                document.getElementById("create-image2-url").value = product.image2_url;
+                document.getElementById("create-image3-url").value = product.image3_url;
+                document.getElementById("create-image4-url").value = product.image4_url;
+                document.getElementById("create-video-url").value = product.video_url; // New field
+                document.getElementById("create-template-url").value = product.template_url; // New field
+                document.getElementById("create-isOn").checked = product.ison;
+                document.getElementById("create-stripe-id").value = product.stripe_id;
+                document.getElementById("create-product-section").classList.remove("hidden");
+            }
+
+            createProductForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const title = document.getElementById("create-name").value;
+                const description = document.getElementById("create-description").value;
+                const price = parseFloat(document.getElementById("create-price").value);
+                const fraisDePortHdf = parseFloat(document.getElementById("create-frais-de-port-hdf").value);
+                const fraisDePortNonHdf = parseFloat(document.getElementById("create-frais-de-port-non-hdf").value);
+                const image1_url = document.getElementById("create-image1-url").value;
+                const image2_url = document.getElementById("create-image2-url").value;
+                const image3_url = document.getElementById("create-image3-url").value;
+                const image4_url = document.getElementById("create-image4-url").value;
+                const video_url = document.getElementById("create-video-url").value; // New field
+                const template_url = document.getElementById("create-template-url").value; // New field
+                const isOnElement = document.getElementById("create-isOn");
+                const isOn = isOnElement ? isOnElement.checked : false;
+                const stripe_id = document.getElementById("create-stripe-id").value;
+
+                const response = await fetch(editingProductId ? `/api/products/${editingProductId}` : "/api/products", {
+                    method: editingProductId ? "PUT" : "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        price,
+                        frais_de_port_hdf: fraisDePortHdf,
+                        frais_de_port_non_hdf: fraisDePortNonHdf,
+                        image1_url,
+                        image2_url,
+                        image3_url,
+                        image4_url,
+                        video_url, // New field
+                        template_url, // New field
+                        ison: isOn,
+                        stripe_id,
+                    }),
+                });
+
+                if (response.ok) {
+                    fetchProducts();
+                    editingProductId = null;
+                    createProductForm.reset();
+                } else {
+                    console.error("Error creating/updating product");
+                }
+            });
+
+            fetchProducts();
         });
-      }
-
-      createProductForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const title = document.getElementById('create-name').value;
-        const description = document.getElementById('create-description').value;
-        const price = parseFloat(document.getElementById('create-price').value);
-        const fraisDePortHdf = parseFloat(document.getElementById('create-frais-de-port-hdf').value);
-        const fraisDePortNonHdf = parseFloat(document.getElementById('create-frais-de-port-non-hdf').value);
-        const image1_url = document.getElementById('create-image1-url').value;
-        const image2_url = document.getElementById('create-image2-url').value;
-        const image3_url = document.getElementById('create-image3-url').value;
-        const image4_url = document.getElementById('create-image4-url').value;
-
-        const response = await fetch('/api/products', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            title, description, price, frais_de_port_hdf: fraisDePortHdf, frais_de_port_non_hdf: fraisDePortNonHdf,
-            image1_url, image2_url, image3_url, image4_url
-          })
-        });
-
-        if (response.ok) {
-          fetchProducts();
-        } else {
-          console.error('Error creating product');
-        }
-      });
-
-      fetchProducts();
-    });
-  </script>
+    </script>
 </body>
 </html>
