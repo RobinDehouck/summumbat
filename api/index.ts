@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import bodyParser from 'body-parser';
 import { createClient } from '@supabase/supabase-js';
 import Stripe from 'stripe';
@@ -16,20 +17,24 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, { apiVersion: '2024-04-10' });
 
+// Needed for __dirname to work in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.json());
 app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
-app.use(express.static(path.join(path.resolve(), 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/test', function (req, res) {
-	res.sendFile(path.join(__dirname, 'public', 'test.html'));
+app.get('/test', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'test.html'));
 });
 
-app.get('/admin', function (req, res) {
-	res.sendFile(path.join(__dirname, 'public', 'admin.thml'));
+app.get('/admin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
 });
 
 app.post('/api/create-checkout-session', async (req: Request, res: Response) => {
@@ -136,4 +141,4 @@ app.put('/api/products/:id', async (req: Request, res: Response) => {
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
-module.exports = app;
+export default app;
