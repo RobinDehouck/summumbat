@@ -20,6 +20,18 @@ app.use(express.json());
 app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
 app.use(express.static(path.join(path.resolve(), 'public')));
 
+app.get('/', function (req, res) {
+	res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/test', function (req, res) {
+	res.sendFile(path.join(__dirname, 'public', 'test.html'));
+});
+
+app.get('/admin', function (req, res) {
+	res.sendFile(path.join(__dirname, 'public', 'admin.thml'));
+});
+
 app.post('/api/create-checkout-session', async (req: Request, res: Response) => {
     const { priceId, email, address, phone } = req.body;
 
@@ -122,14 +134,6 @@ app.put('/api/products/:id', async (req: Request, res: Response) => {
     res.status(200).json(data);
 });
 
-app.get('/:page', (req, res, next) => {
-    const page = req.params.page;
-    const filePath = path.join(path.resolve(), 'public', `${page}.html`);
-    res.sendFile(filePath, err => { if (err) next(); });
-});
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(path.resolve(), 'public', 'index.html'));
-});
-
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+module.exports = app;
