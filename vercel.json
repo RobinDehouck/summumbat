@@ -16,8 +16,16 @@
       "dest": "/index.ts"
     },
     {
+      "src": "/api/products",
+      "dest": "/index.ts"
+    },
+    {
       "src": "/test",
       "dest": "/public/test.html"
+    },
+    {
+      "src": "/admin",
+      "dest": "/public/admin.html"
     },
     {
       "handle": "filesystem"
