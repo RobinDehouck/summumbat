@@ -23,10 +23,10 @@ const __dirname = path.dirname(__filename);
 
 app.use(express.json());
 app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public'))); // Adjust the path to point to the public directory
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'), (err) => {
+    res.sendFile(path.join(__dirname, '../public', 'index.html'), (err) => {
         if (err) {
             console.error(err);
             res.status(500).send('Internal Server Error');
@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'test.html'), (err) => {
+    res.sendFile(path.join(__dirname, '../public', 'test.html'), (err) => {
         if (err) {
             console.error(err);
             res.status(500).send('Internal Server Error');
@@ -44,7 +44,7 @@ app.get('/test', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'admin.html'), (err) => {
+    res.sendFile(path.join(__dirname, '../public', 'admin.html'), (err) => {
         if (err) {
             console.error(err);
             res.status(500).send('Internal Server Error');
