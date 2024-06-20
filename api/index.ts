@@ -26,15 +26,30 @@ app.use('/webhook', bodyParser.raw({ type: 'application/json' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'), (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 });
 
 app.get('/test', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'test.html'));
+    res.sendFile(path.join(__dirname, 'public', 'test.html'), (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'admin.html'));
+    res.sendFile(path.join(__dirname, 'public', 'admin.html'), (err) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 });
 
 app.post('/api/create-checkout-session', async (req: Request, res: Response) => {
