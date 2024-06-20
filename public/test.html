@@ -18,8 +18,7 @@
                 <div class="flex items-center relative">
                     <img src="logosummum.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" class="h-16 w-16">
                     <img id="logo-letter" src="summum-letters-black.png" alt="Logo Summum Bat spécialiste en énergie renouvelable" class="w-60 -ml-2"> 
-                    <div class="flex items-center"> <!-- Ensure this div is also a flex container -->
-                    </div>
+                    <div class="flex items-center"></div>
                   </div>            
                 </a>
               </div>
@@ -27,13 +26,12 @@
                 <button id="nav-toggle" class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                   <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <title>Menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                   </svg>
                 </button>
               </div>
               <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-                <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                </ul>
+                <ul class="list-reset lg:flex justify-end flex-1 items-center"></ul>
                 <button
                 onclick="call()"
                   id="navAction"
@@ -44,33 +42,17 @@
               </div>
             </div>
           </nav>
-        <main class="relative mt-20 lg:mt-24">
+
+          <main class="relative mt-20 lg:mt-24">
             <div class="">
                 <div class="mx-auto max-w-2xl py-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                     <h2 class="sr-only">Products</h2>
-                        <!-- display the vid in repeat -->
-                        <div id="video-container" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 relative">
-                                <img src="/img_solarpanels/4 x 445w/PACK JA SOLAR (1).png" alt="Background image" class="h-full w-full object-cover object-center">
-                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -47%); width: 60%; height: 63%;">
-                                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
-                                        <source src="/img_solarpanels/4 x 445w/PACK JA SOLAR (2).mp4" type="video/mp4">
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        
-                    <div id="products-list" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                        <!-- public/img_solarpanels/4 x 445w/PACK JA SOLAR (1).mp4 -->
-
-
-                        <!-- Products will be dynamically inserted here -->
+                    <div id="products-list" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">                        <!-- Products will be dynamically inserted here -->
                     </div>
                 </div>
             </div>
         
-            <div id="product-overview" class=" hidden">
+            <div id="product-overview" class="hidden">
                 <div class="pt-6">
                     <nav aria-label="Breadcrumb">
                         <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -120,8 +102,6 @@
                         <div class="mt-4 lg:row-span-3 lg:mt-0">
                             <h2 class="sr-only">Product information</h2>
                             <p id="product-price" class="text-3xl tracking-tight text-gray-900">€0.00</p>
-                            
-                            <!-- Shipping and installation options -->
                             <div class="mt-4">
                                 <h3 class="text-sm font-medium text-gray-900">Shipping</h3>
                                 <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-3">
@@ -157,8 +137,6 @@
                                     </label>
                                 </div>
                             </div>
-                            
-                            
                             <form id="payment-form" class="space-y-6 mt-10">
                                 <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                                     <div>
@@ -185,7 +163,6 @@
                                 </div>
                             </form>
                         </div>
-                        
                         <div class="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
                             <div>
                                 <h3 class="sr-only">Description</h3>
@@ -196,7 +173,6 @@
                         </div>
                     </div>
                 </div>
-        
                 <!-- checkout -->
                 <div class="fixed inset-x-0 bottom-0 bg-white border-t border-gray-200 z-50">
                     <div class="max-w-2xl mx-auto py-4 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -206,200 +182,202 @@
                             </button>
                         </div>
                     </div>
-            </div>
-        
-            <!-- Overlay for full view images -->
-            <div class="overlay" id="image-overlay">
-                <span class="close" id="close-overlay">&times;</span>
-                <span class="nav left" id="prev-image">&#10094;</span>
-                <img src="" alt="Full View Image" id="full-image">
-                <span class="nav right" id="next-image">&#10095;"></span>
+                </div>
+                <!-- Overlay for full view images -->
+                <div class="overlay" id="image-overlay">
+                    <span class="close" id="close-overlay">&times;</span>
+                    <span class="nav left" id="prev-image">&#10094;</span>
+                    <img src="" alt="Full View Image" id="full-image">
+                    <span class="nav right" id="next-image">&#10095;"></span>
+                </div>
             </div>
         </main>
-        
         <script>
-document.addEventListener('DOMContentLoaded', function () {
-    var stripe = Stripe('pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq');
-    var currentImageIndex = 0;
-    var productImages = [];
-    var basePrice = 0;
+            document.addEventListener('DOMContentLoaded', function () {
+                var stripe = Stripe('pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq');
+                var currentImageIndex = 0;
+                var productImages = [];
+                var basePrice = 0;
 
-    function openOverlay(index) {
-        currentImageIndex = index;
-        document.getElementById('full-image').src = productImages[index];
-        document.getElementById('image-overlay').style.display = 'flex';
-    }
+                function openOverlay(index) {
+                    currentImageIndex = index;
+                    document.getElementById('full-image').src = productImages[index];
+                    document.getElementById('image-overlay').style.display = 'flex';
+                }
 
-    function closeOverlay() {
-        document.getElementById('image-overlay').style.display = 'none';
-    }
+                function closeOverlay() {
+                    document.getElementById('image-overlay').style.display = 'none';
+                }
 
-    function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % productImages.length;
-        document.getElementById('full-image').src = productImages[currentImageIndex];
-    }
+                function showNextImage() {
+                    currentImageIndex = (currentImageIndex + 1) % productImages.length;
+                    document.getElementById('full-image').src = productImages[currentImageIndex];
+                }
 
-    function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
-        document.getElementById('full-image').src = productImages[currentImageIndex];
-    }
+                function showPrevImage() {
+                    currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+                    document.getElementById('full-image').src = productImages[currentImageIndex];
+                }
 
-    document.getElementById('close-overlay').addEventListener('click', closeOverlay);
-    document.getElementById('next-image').addEventListener('click', showNextImage);
-    document.getElementById('prev-image').addEventListener('click', showPrevImage);
+                document.getElementById('close-overlay').addEventListener('click', closeOverlay);
+                document.getElementById('next-image').addEventListener('click', showNextImage);
+                document.getElementById('prev-image').addEventListener('click', showPrevImage);
 
-    function renderProducts(products) {
-        const productsListElement = document.getElementById('products-list');
-        productsListElement.innerHTML = '';
-        products.forEach(product => {
-            const productElement = document.createElement('div');
-            productElement.classList.add('group', 'product');
-            productElement.dataset.productId = product.id;
-            productElement.dataset.priceId = product.stripe_id; // Use stripe_id for price_id
-            productElement.dataset.productName = product.title;
-            productElement.dataset.productPrice = product.price.toFixed(2);
+                function renderProducts(products) {
+                    const productsListElement = document.getElementById('products-list');
+                    productsListElement.innerHTML = '';
+                    products.forEach(product => {
+                        const productElement = document.createElement('div');
+                        productElement.classList.add('group', 'product', 'rounded-lg', 'shadow-lg', 'overflow-hidden');
+                        productElement.dataset.productId = product.id;
+                        productElement.dataset.priceId = product.stripe_id;
+                        productElement.dataset.productName = product.title;
+                        productElement.dataset.productPrice = product.price.toFixed(2);
 
-            productElement.innerHTML = `
-                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                    <img src="${product.image1_url}" alt="${product.title}" class="h-full w-full object-cover object-center group-hover:opacity-75">
-                </div>
-                <h3 class="mt-4 text-sm text-gray-700">${product.title}</h3>
-                <p class="mt-1 text-lg font-medium text-gray-900">€${product.price.toFixed(2)}</p>
-                <button class="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">View Details</button>
-            `;
-            productsListElement.appendChild(productElement);
+                        productElement.innerHTML = `
+                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7 relative">
+                                <img src="${product.template_url || '/img/default-template.png'}" alt="${product.title}" class="h-full w-full object-cover object-center">
+                                ${product.video_url ? `
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -47%); width: 60%; height: 63%;">
+                                        <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;">
+                                            <source src="${product.video_url}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <h3 class="mt-4 text-sm text-gray-700 text-center">${product.title}</h3>
+                            <p class="mt-1 text-lg font-medium text-gray-900 text-center">€${product.price.toFixed(2)}</p>
+                            <button class="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">View Details</button>
+                        `;
+                        productsListElement.appendChild(productElement);
 
-            // Fix product reference here
-            const productImagesList = [
-                product.image1_url,
-                product.image2_url,
-                product.image3_url,
-                product.image4_url
-            ];
+                        const productImagesList = [
+                            product.image1_url,
+                            product.image2_url,
+                            product.image3_url,
+                            product.image4_url
+                        ];
 
-            productElement.querySelector('button').addEventListener('click', () => {
-                basePrice = product.price; // Set base price
-                document.getElementById('product-title').innerText = product.title;
-                document.getElementById('product-price').innerText = '€' + basePrice.toFixed(2);
-                document.getElementById('product-image-1').src = productImagesList[0];
-                document.getElementById('product-image-2').src = productImagesList[1];
-                document.getElementById('product-image-3').src = productImagesList[2];
-                document.getElementById('product-image-4').src = productImagesList[3];
-                document.getElementById('product-description').innerText = product.description;
-                document.getElementById('breadcrumb-product-name').innerText = product.title;
-                document.getElementById('product_id').value = product.id;
-                document.getElementById('stripe_id').value = product.stripe_id;
+                        productElement.querySelector('button').addEventListener('click', () => {
+                            basePrice = product.price;
+                            document.getElementById('product-title').innerText = product.title;
+                            document.getElementById('product-price').innerText = '€' + basePrice.toFixed(2);
+                            document.getElementById('product-image-1').src = productImagesList[0];
+                            document.getElementById('product-image-2').src = productImagesList[1];
+                            document.getElementById('product-image-3').src = productImagesList[2];
+                            document.getElementById('product-image-4').src = productImagesList[3];
+                            document.getElementById('product-description').innerText = product.description;
+                            document.getElementById('breadcrumb-product-name').innerText = product.title;
+                            document.getElementById('product_id').value = product.id;
+                            document.getElementById('stripe_id').value = product.stripe_id;
 
-                document.querySelector('.grid').classList.add('hidden');
-                document.getElementById('product-overview').classList.remove('hidden');
+                            document.querySelector('.grid').classList.add('hidden');
+                            document.getElementById('product-overview').classList.remove('hidden');
 
-                productImages = productImagesList;
-                document.querySelectorAll('#product-overview img').forEach((img, index) => {
-                    img.addEventListener('click', () => openOverlay(index));
+                            productImages = productImagesList;
+                            document.querySelectorAll('#product-overview img').forEach((img, index) => {
+                                img.addEventListener('click', () => openOverlay(index));
+                            });
+                        });
+                    });
+                }
+
+                async function fetchProducts() {
+                    const response = await fetch('/api/products');
+                    const products = await response.json();
+                    const activeProducts = products.filter(product => product.ison);
+                    renderProducts(activeProducts);
+                }
+
+                document.querySelectorAll('.shipping-option input').forEach((input) => {
+                    input.addEventListener('change', (event) => {
+                        document.querySelectorAll('.shipping-option').forEach((label) => {
+                            label.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                        });
+                        event.target.closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                        calculateTotalPrice();
+                    });
+                });
+
+                document.querySelectorAll('.installation-option input').forEach((input) => {
+                    input.addEventListener('change', (event) => {
+                        document.querySelectorAll('.installation-option').forEach((label) => {
+                            label.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                        });
+                        event.target.closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                        calculateTotalPrice();
+                    });
+                });
+
+                function calculateTotalPrice() {
+                    const shipping = document.querySelector('input[name="shipping"]:checked').value;
+                    const installation = document.querySelector('input[name="installation"]:checked').value;
+                    let totalPrice = basePrice;
+
+                    if (shipping === 'hdf') {
+                        totalPrice += 250;
+                    } else if (shipping === 'non_hdf') {
+                        totalPrice += 500;
+                    }
+
+                    if (installation === 'installation') {
+                        totalPrice *= 1.25;
+                    }
+
+                    document.getElementById('product-price').innerText = '€' + totalPrice.toFixed(2);
+                }
+
+                document.addEventListener('DOMContentLoaded', function () {
+                    document.querySelector('.shipping-option input:checked').closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                    document.querySelector('.installation-option input:checked').closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
+                });
+
+                fetchProducts();
+
+                var checkoutButton = document.getElementById('checkout-button-1');
+                var paymentForm = document.getElementById('payment-form');
+
+                paymentForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    const priceId = document.getElementById('stripe_id').value;
+                    const email = document.getElementById('email').value;
+                    const address = document.getElementById('address').value;
+                    const phone = document.getElementById('phone').value;
+
+                    fetch('/api/create-checkout-session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            priceId: priceId,
+                            email: email,
+                            address: address,
+                            phone: phone,
+                        }),
+                    })
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(function (session) {
+                        if (!session.id) {
+                            throw new Error('Session ID not returned');
+                        }
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    })
+                    .then(function (result) {
+                        if (result.error) {
+                            alert(result.error.message);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error('Error:', error);
+                    });
                 });
             });
-        });
-    }
-
-    async function fetchProducts() {
-        const response = await fetch('/api/products');
-        const products = await response.json();
-        const activeProducts = products.filter(product => product.ison);
-        renderProducts(activeProducts);
-    }
-
-    document.querySelectorAll('.shipping-option input').forEach((input) => {
-    input.addEventListener('change', (event) => {
-        document.querySelectorAll('.shipping-option').forEach((label) => {
-            label.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
-        });
-        event.target.closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
-        calculateTotalPrice();
-    });
-});
-
-document.querySelectorAll('.installation-option input').forEach((input) => {
-    input.addEventListener('change', (event) => {
-        document.querySelectorAll('.installation-option').forEach((label) => {
-            label.classList.remove('ring-2', 'ring-indigo-500', 'bg-indigo-50');
-        });
-        event.target.closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
-        calculateTotalPrice();
-    });
-});
-
-function calculateTotalPrice() {
-    const shipping = document.querySelector('input[name="shipping"]:checked').value;
-    const installation = document.querySelector('input[name="installation"]:checked').value;
-    let totalPrice = basePrice;
-
-    if (shipping === 'hdf') {
-        totalPrice += 250;
-    } else if (shipping === 'non_hdf') {
-        totalPrice += 500;
-    }
-
-    if (installation === 'installation') {
-        totalPrice *= 1.25;
-    }
-
-    document.getElementById('product-price').innerText = '€' + totalPrice.toFixed(2);
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Initialize with default checked styles
-    document.querySelector('.shipping-option input:checked').closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
-    document.querySelector('.installation-option input:checked').closest('label').classList.add('ring-2', 'ring-indigo-500', 'bg-indigo-50');
-});
-
-
-    fetchProducts();
-
-    var checkoutButton = document.getElementById('checkout-button-1');
-    var paymentForm = document.getElementById('payment-form');
-
-    paymentForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const priceId = document.getElementById('stripe_id').value;
-        const email = document.getElementById('email').value;
-        const address = document.getElementById('address').value;
-        const phone = document.getElementById('phone').value;
-
-        fetch('/api/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                priceId: priceId,
-                email: email,
-                address: address,
-                phone: phone,
-            }),
-        })
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(function (session) {
-            if (!session.id) {
-                throw new Error('Session ID not returned');
-            }
-            return stripe.redirectToCheckout({ sessionId: session.id });
-        })
-        .then(function (result) {
-            if (result.error) {
-                alert(result.error.message);
-            }
-        })
-        .catch(function (error) {
-            console.error('Error:', error);
-        });
-    });
-});
-
         </script>
     </body>
 </html>
