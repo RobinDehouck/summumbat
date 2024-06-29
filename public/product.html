@@ -5,8 +5,7 @@
       src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"
       defer
     ></script>
-    <link rel="stylesheet" href="/test.css" />
-    <script type="module" src="main.js"></script>
+    <link rel="stylesheet" href="/product.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Panneau solaire Lille - Summum Bat</title>
@@ -292,17 +291,18 @@
       </div>
     </section>
 
-    <div class="overlay" id="image-overlay">
-      <span class="close" id="close-overlay">&times;</span>
-      <span class="nav left" id="prev-image">&#10094;</span>
-      <img src="" alt="Full View Image" id="full-image" />
-      <span class="nav right" id="next-image">&#10095;</span>
-    </div>
-
+	<div class="overlay" id="image-overlay">
+		<span class="close" id="close-overlay">&times;</span>
+		<span class="nav left" id="prev-image">&#10094;</span>
+		<img src="" alt="Full View Image" id="full-image">
+		<span class="nav right" id="next-image">&#10095;</span>
+	  </div>
+	  
     <!-- Include your footer here -->
+	</body>
 
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
   var stripe = Stripe("pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq");
   var currentImageIndex = 0;
   var productImages = [];
@@ -369,12 +369,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeProductPage() {
     document.querySelectorAll(".shipping-option input, .installation-option input").forEach((input) => {
-      input.addEventListener("click", function () {
-        input.dispatchEvent(new Event("change", { bubbles: true }));
-      });
-
       input.addEventListener("change", function () {
-        goToNextStep();
+        if (input.name === "shipping" || input.name === "installation") {
+          goToNextStep();
+        }
       });
     });
 
@@ -497,48 +495,38 @@ document.addEventListener("DOMContentLoaded", function () {
     totalPrice = basePrice;
   }
 
-  const overlay = document.createElement("div");
-  overlay.id = "image-overlay";
-  overlay.className = "fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden";
-  overlay.innerHTML = `
-    <div class="relative">
-      <button id="close-overlay" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
-      <img id="overlay-image" src="" alt="Full size image" class="max-h-90vh max-w-90vw object-contain" />
-      <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl">&lt;</button>
-      <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl">&gt;</button>
-    </div>
-  `;
-  document.body.appendChild(overlay);
-
   function openOverlay(index) {
-    currentImageIndex = index;
-    document.getElementById("overlay-image").src = productImages[index];
-    overlay.classList.remove("hidden");
-  }
+  currentImageIndex = index;
+  document.getElementById('full-image').src = productImages[index];
+  document.getElementById('image-overlay').style.display = 'flex';
+}
 
-  function closeOverlay() {
-    overlay.classList.add("hidden");
-  }
+function closeOverlay() {
+  document.getElementById('image-overlay').style.display = 'none';
+}
 
-  function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % productImages.length;
-    document.getElementById("overlay-image").src = productImages[currentImageIndex];
-  }
+function showNextImage() {
+  currentImageIndex = (currentImageIndex + 1) % productImages.length;
+  document.getElementById('full-image').src = productImages[currentImageIndex];
+}
 
-  function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
-    document.getElementById("overlay-image").src = productImages[currentImageIndex];
-  }
+function showPrevImage() {
+  currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+  document.getElementById('full-image').src = productImages[currentImageIndex];
+}
 
-  document.getElementById("close-overlay").addEventListener("click", closeOverlay);
-  document.getElementById("next-image").addEventListener("click", showNextImage);
-  document.getElementById("prev-image").addEventListener("click", showPrevImage);
+document.getElementById('close-overlay').addEventListener('click', closeOverlay);
+document.getElementById('next-image').addEventListener('click', showNextImage);
+document.getElementById('prev-image').addEventListener('click', showPrevImage);
 
-  document.querySelectorAll(".product-image").forEach((img, index) => {
-    img.addEventListener("click", () => openOverlay(index));
-  });
+
+document.querySelectorAll("#product-image-1, #product-image-2, #product-image-3, #product-image-4").forEach((img, index) => {
+  img.addEventListener("click", () => openOverlay(index));
 });
 
-</script>
+
+});
+	
+  </script>
   </body>
 </html>
