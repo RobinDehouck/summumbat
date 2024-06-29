@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8e063;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#56ccf2;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="hexagon-pattern" x="0" y="0" width="50" height="86.6" patternUnits="userSpaceOnUse">
+      <path d="M25 0 L50 14.43 L50 43.3 L25 57.73 L0 43.3 L0 14.43 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background gradient -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)"/>
+  
+  <!-- Hexagon pattern overlay -->
+  <rect width="100%" height="100%" fill="url(#hexagon-pattern)"/>
+  
+  <!-- Curved lines -->
+  <path d="M0 300 Q 400 200, 800 300 T 1600 300" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <path d="M0 350 Q 400 450, 800 350 T 1600 350" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+</svg>

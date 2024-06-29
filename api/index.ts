@@ -43,6 +43,10 @@ app.get('/test', (req, res) => {
     });
 });
 
+app.get('/product/:productSlug', (req: Request, res: Response) => {
+    res.sendFile(path.join(__dirname, '../public', 'product.html'));
+});
+
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'admin.html'), (err) => {
         if (err) {
@@ -152,6 +156,30 @@ app.put('/api/products/:id', async (req: Request, res: Response) => {
     }
 
     res.status(200).json(data);
+});
+
+app.get('/api/product/:productSlug', async (req: Request, res: Response) => {
+    const productSlug = req.params.productSlug;
+    const productTitle = productSlug.replace(/-/g, ' ');
+    
+    try {
+        const { data, error } = await supabase
+            .from('products')
+            .select('*')
+            .ilike('title', productTitle)
+            .single();
+
+        if (error) throw error;
+
+        if (!data) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

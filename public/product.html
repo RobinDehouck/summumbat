@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script
+      src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"
+      defer
+    ></script>
+    <link rel="stylesheet" href="/test.css" />
+    <script type="module" src="main.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panneau solaire Lille - Summum Bat</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplecart/3.0.6/simplecart.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body class="bg-gray-100 background-decoration">
+    <nav id="header" class="fixed w-full z-30 top-0 text-white bg-white shadow">
+      <div
+        class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2"
+      >
+        <div class="pl-4 flex items-center">
+          <a
+            class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+            href="#"
+          >
+            <div class="flex items-center relative">
+              <img
+                src="/logosummum.png"
+                alt="Logo Summum Bat spécialiste en énergie renouvelable"
+                class="h-16 w-16"
+              />
+              <img
+                id="logo-letter"
+                src="/summum-letters-black.png"
+                alt="Logo Summum Bat spécialiste en énergie renouvelable"
+                class="w-60 -ml-2"
+              />
+            </div>
+          </a>
+        </div>
+        <div class="block lg:hidden pr-4">
+          <button
+            id="nav-toggle"
+            class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+          >
+            <svg
+              class="fill-current h-6 w-6"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <title>Menu</title>
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+            </svg>
+          </button>
+        </div>
+        <div
+          class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+          id="nav-content"
+        >
+          <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <!-- Add any necessary menu items here -->
+          </ul>
+          <button
+            onclick="call()"
+            id="navAction"
+            class="mx-auto lg:mx-0 hover:underline rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out gradient-bg text-white"
+          >
+            Appeler
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <section
+      id="main-content"
+      class="cd-z-index-1"
+      style="background-image: url('/bg-svg/bg-catalog.svg')"
+    >
+      <div class="cd-position-relative cd-z-index-2">
+        <div
+          id="product-overview"
+          class="mt-20"
+          style="background-image: url('/bg-svg/bg-product.svg')"
+        >
+          <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 rounded-lg shadow-lg"
+          >
+            <nav aria-label="Breadcrumb">
+              <ol role="list" class="flex items-center space-x-2 text-sm">
+                <li>
+                  <a
+                    href="/"
+                    id="breadcrumb-home"
+                    class="text-green-600 hover:text-green-800"
+                    >Home</a
+                  >
+                  <span class="mx-2 text-gray-400">/</span>
+                </li>
+                <li>
+                  <a
+                    href="/catalog"
+                    id="breadcrumb-catalog"
+                    class="text-green-600 hover:text-green-800"
+                    >Catalog</a
+                  >
+                  <span class="mx-2 text-gray-400">/</span>
+                </li>
+                <li>
+                  <span
+                    aria-current="page"
+                    id="breadcrumb-product-name"
+                    class="text-gray-900 font-medium"
+                  ></span>
+                </li>
+              </ol>
+            </nav>
+
+            <div class="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-2">
+              <!-- Product Images -->
+              <div class="lg:max-w-lg lg:self-end">
+                <div
+                  class="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden shadow-lg"
+                >
+                  <img
+                    id="product-image-1"
+                    src=""
+                    alt=""
+                    class="w-full h-full object-center object-cover cursor-pointer transition duration-300 ease-in-out transform hover:scale-105"
+                  />
+                </div>
+                <div class="mt-4 grid grid-cols-3 gap-4">
+                  <div
+                    class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-md"
+                  >
+                    <img
+                      id="product-image-2"
+                      src=""
+                      alt=""
+                      class="w-full h-full object-center object-cover cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
+                    />
+                  </div>
+                  <div
+                    class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-md"
+                  >
+                    <img
+                      id="product-image-3"
+                      src=""
+                      alt=""
+                      class="w-full h-full object-center object-cover cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
+                    />
+                  </div>
+                  <div
+                    class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-md"
+                  >
+                    <img
+                      id="product-image-4"
+                      src=""
+                      alt=""
+                      class="w-full h-full object-center object-cover cursor-pointer transition duration-300 ease-in-out transform hover:scale-110"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Product Info -->
+              <div class="lg:col-span-1">
+                <h1
+                  id="product-title"
+                  class="text-3xl font-bold text-gray-900"
+                ></h1>
+                <p
+                  id="product-price"
+                  class="mt-4 text-3xl font-bold text-green-600"
+                ></p>
+                <div class="mt-4 flex items-center">
+                  <div class="flex items-center text-yellow-400">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span class="ml-2 text-sm text-gray-600">(128 reviews)</span>
+                </div>
+
+				<!-- product data and choices-->
+				<div class="max-w-2xl mx-auto space-y-8">
+					<!-- Product description (always visible) -->
+					<div class="bg-white rounded-lg shadow-sm p-4 border border-green-100">
+					  <h3 class="text-lg font-medium text-gray-900 mb-2">Description du produit</h3>
+					  <p id="product-description" class="text-sm text-gray-600"></p>
+					</div>
+				  
+					<!-- Configuration steps -->
+					<div id="configuration-steps" class="space-y-6">
+					  <div id="step-1" class="bg-white rounded-lg shadow-sm p-4 border border-green-100">
+						<h3 class="text-lg font-medium text-gray-900 mb-3">Livraison</h3>
+						<div class="grid grid-cols-3 gap-3">
+						  <label class="shipping-option flex flex-col items-center justify-center p-3 border rounded-md text-sm font-medium text-gray-700 hover:bg-green-50 cursor-pointer transition-colors duration-200">
+							<input type="radio" name="shipping" value="click_collect" class="sr-only" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+							</svg>
+							Click & Collect
+							<span class="text-xs text-gray-500 mt-1">€0.00</span>
+						  </label>
+						  <label class="shipping-option flex flex-col items-center justify-center p-3 border rounded-md text-sm font-medium text-gray-700 hover:bg-green-50 cursor-pointer transition-colors duration-200">
+							<input type="radio" name="shipping" value="hdf" class="sr-only" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+							</svg>
+							Hauts de France
+							<span class="text-xs text-gray-500 mt-1">€250.00</span>
+						  </label>
+						  <label class="shipping-option flex flex-col items-center justify-center p-3 border rounded-md text-sm font-medium text-gray-700 hover:bg-green-50 cursor-pointer transition-colors duration-200">
+							<input type="radio" name="shipping" value="non_hdf" class="sr-only" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+							</svg>
+							Autre région
+							<span class="text-xs text-gray-500 mt-1">€500.00</span>
+						  </label>
+						</div>
+					  </div>
+				  
+					  <div id="step-2" class="bg-white rounded-lg shadow-sm p-4 border border-green-100 hidden">
+						<h3 class="text-lg font-medium text-gray-900 mb-3">Installation</h3>
+						<div class="grid grid-cols-2 gap-3">
+						  <label class="installation-option flex flex-col items-center justify-center p-3 border rounded-md text-sm font-medium text-gray-700 hover:bg-green-50 cursor-pointer transition-colors duration-200">
+							<input type="radio" name="installation" value="no_installation" class="sr-only" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+							</svg>
+							Sans installation
+							<span class="text-xs text-gray-500 mt-1">€0.00</span>
+						  </label>
+						  <label class="installation-option flex flex-col items-center justify-center p-3 border rounded-md text-sm font-medium text-gray-700 hover:bg-green-50 cursor-pointer transition-colors duration-200">
+							<input type="radio" name="installation" value="installation" class="sr-only" />
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+							</svg>
+							Avec installation
+							<span class="text-xs text-gray-500 mt-1">+25%</span>
+						  </label>
+						</div>
+						<div class="flex justify-between mt-4">
+						  <button id="prev-step-2" class="bg-gray-500 text-white px-4 py-2 rounded">Précédent</button>
+						</div>
+					  </div>
+				  
+					  <div id="step-3" class="bg-white rounded-lg shadow-sm p-4 border border-green-100 hidden">
+						<h3 class="text-lg font-medium text-gray-900 mb-3">Informations de contact</h3>
+						<form id="payment-form" class="space-y-4">
+						  <div class="grid grid-cols-2 gap-4">
+							<div>
+							  <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+							  <input type="email" name="email" id="email" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm" />
+							</div>
+							<div>
+							  <label for="phone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+							  <input type="tel" name="phone" id="phone" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm" />
+							</div>
+						  </div>
+						  <div>
+							<label for="address" class="block text-sm font-medium text-gray-700">Adresse</label>
+							<textarea name="address" id="address" rows="2" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm"></textarea>
+						  </div>
+						  <input type="hidden" name="product_id" id="product_id" value="" />
+						  <input type="hidden" name="stripe_id" id="stripe_id" value="" />
+						  <button type="submit" id="checkout-button-1" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-colors duration-200" disabled>
+							Passer à la caisse
+						  </button>
+						</form>
+						<div class="flex justify-between mt-4">
+						  <button id="prev-step-3" class="bg-gray-500 text-white px-4 py-2 rounded">Précédent</button>
+						</div>
+					  </div>
+					</div>
+				  </div>
+						
+				
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="overlay" id="image-overlay">
+      <span class="close" id="close-overlay">&times;</span>
+      <span class="nav left" id="prev-image">&#10094;</span>
+      <img src="" alt="Full View Image" id="full-image" />
+      <span class="nav right" id="next-image">&#10095;</span>
+    </div>
+
+    <!-- Include your footer here -->
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  var stripe = Stripe("pk_live_ca8gmEy7wmAAlOxKFqa9Opll00TnfFx9rq");
+  var currentImageIndex = 0;
+  var productImages = [];
+  var basePrice = 0;
+  var totalPrice = 0;
+  var currentStep = 1;
+
+  function updateRecap() {
+    const shipping = document.querySelector('input[name="shipping"]:checked');
+    const installation = document.querySelector('input[name="installation"]:checked');
+    if (shipping) {
+      const shippingIcon = shipping.closest("label").querySelector("svg").cloneNode(true);
+      shippingIcon.classList.add("h-4", "w-4");
+    }
+    if (installation) {
+      const installationIcon = installation.closest("label").querySelector("svg").cloneNode(true);
+      installationIcon.classList.add("h-4", "w-4");
+    }
+    calculateTotalPrice();
+    const priceSpan = document.createElement("span");
+    priceSpan.textContent = `€${totalPrice.toFixed(2)}`;
+  }
+
+  function calculateTotalPrice() {
+    const shipping = document.querySelector('input[name="shipping"]:checked');
+    const installation = document.querySelector('input[name="installation"]:checked');
+    totalPrice = basePrice;
+    if (shipping) {
+      totalPrice += shipping.value === "hdf" ? 250 : shipping.value === "non_hdf" ? 500 : 0;
+    }
+    if (installation && installation.value === "installation") {
+      totalPrice *= 1.25;
+    }
+    const productPriceElement = document.getElementById("product-price");
+    if (productPriceElement) {
+      productPriceElement.textContent = "€" + totalPrice.toFixed(2);
+    }
+  }
+
+  function goToStep(step) {
+    document.getElementById(`step-${currentStep}`).classList.add("hidden");
+    currentStep = step;
+    document.getElementById(`step-${currentStep}`).classList.remove("hidden");
+    updateRecap();
+    applySelectedOutline();
+  }
+
+  function goToNextStep() {
+    goToStep(currentStep + 1);
+  }
+
+  function goToPreviousStep() {
+    goToStep(currentStep - 1);
+  }
+
+  function applySelectedOutline() {
+    document.querySelectorAll('input[type="radio"]').forEach((input) => {
+      input.closest("label").classList.remove("bg-green-50", "border-green-500");
+    });
+    document.querySelectorAll('input[type="radio"]:checked').forEach((input) => {
+      input.closest("label").classList.add("bg-green-50", "border-green-500");
+    });
+  }
+
+  function initializeProductPage() {
+    document.querySelectorAll(".shipping-option input, .installation-option input").forEach((input) => {
+      input.addEventListener("click", function () {
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      });
+
+      input.addEventListener("change", function () {
+        goToNextStep();
+      });
+    });
+
+    document.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((input) => {
+      input.addEventListener("input", function () {
+        updateRecap();
+        checkFormCompletion();
+      });
+    });
+
+    function checkFormCompletion() {
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
+      const isComplete = email && phone && address;
+      document.getElementById("checkout-button-1").disabled = !isComplete;
+    }
+
+    var paymentForm = document.getElementById("payment-form");
+
+    if (paymentForm) {
+      paymentForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const priceId = document.getElementById("stripe_id")?.value;
+        const email = document.getElementById("email")?.value;
+        const address = document.getElementById("address")?.value;
+        const phone = document.getElementById("phone")?.value;
+        const shipping = document.querySelector('input[name="shipping"]:checked')?.value;
+        const installation = document.querySelector('input[name="installation"]:checked')?.value;
+
+        fetch("/api/create-checkout-session", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            priceId: priceId,
+            email: email,
+            address: address,
+            phone: phone,
+            shipping: shipping,
+            installation: installation,
+            totalPrice: totalPrice,
+          }),
+        })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then(function (session) {
+            if (!session.id) {
+              throw new Error("Session ID not returned");
+            }
+            return stripe.redirectToCheckout({ sessionId: session.id });
+          })
+          .then(function (result) {
+            if (result.error) {
+              alert(result.error.message);
+            }
+          })
+          .catch(function (error) {
+            console.error("Error:", error);
+          });
+      });
+    }
+
+    document.getElementById("prev-step-2").addEventListener("click", goToPreviousStep);
+    document.getElementById("prev-step-3").addEventListener("click", goToPreviousStep);
+
+    applySelectedOutline();
+    updateRecap();
+  }
+
+  const productSlug = window.location.pathname.split("/").pop();
+  fetch(`/api/product/${productSlug}`)
+    .then((response) => response.json())
+    .then((product) => {
+      populateProductData(product);
+      initializeProductPage();
+    })
+    .catch((error) => {
+      console.error("Error fetching product data:", error);
+    });
+
+  function populateProductData(product) {
+    document.title = `${product.title} - Summum Bat`;
+    const elements = {
+      "product-title": product.title,
+      "product-price": `€${product.price.toFixed(2)}`,
+      "product-description": product.description,
+      "product-image-1": product.image1_url,
+      "product-image-2": product.image2_url,
+      "product-image-3": product.image3_url,
+      "product-image-4": product.image4_url,
+      product_id: product.id,
+      stripe_id: product.stripe_id,
+      "breadcrumb-product-name": product.title,
+    };
+
+    for (const [id, value] of Object.entries(elements)) {
+      const element = document.getElementById(id);
+      if (element) {
+        if (id.startsWith("product-image-")) {
+          element.src = value;
+        } else {
+          element.textContent = value;
+        }
+      }
+    }
+
+    productImages = [
+      product.image1_url,
+      product.image2_url,
+      product.image3_url,
+      product.image4_url,
+    ];
+    basePrice = parseFloat(product.price);
+    totalPrice = basePrice;
+  }
+
+  const overlay = document.createElement("div");
+  overlay.id = "image-overlay";
+  overlay.className = "fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden";
+  overlay.innerHTML = `
+    <div class="relative">
+      <button id="close-overlay" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
+      <img id="overlay-image" src="" alt="Full size image" class="max-h-90vh max-w-90vw object-contain" />
+      <button id="prev-image" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl">&lt;</button>
+      <button id="next-image" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl">&gt;</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  function openOverlay(index) {
+    currentImageIndex = index;
+    document.getElementById("overlay-image").src = productImages[index];
+    overlay.classList.remove("hidden");
+  }
+
+  function closeOverlay() {
+    overlay.classList.add("hidden");
+  }
+
+  function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % productImages.length;
+    document.getElementById("overlay-image").src = productImages[currentImageIndex];
+  }
+
+  function showPrevImage() {
+    currentImageIndex = (currentImageIndex - 1 + productImages.length) % productImages.length;
+    document.getElementById("overlay-image").src = productImages[currentImageIndex];
+  }
+
+  document.getElementById("close-overlay").addEventListener("click", closeOverlay);
+  document.getElementById("next-image").addEventListener("click", showNextImage);
+  document.getElementById("prev-image").addEventListener("click", showPrevImage);
+
+  document.querySelectorAll(".product-image").forEach((img, index) => {
+    img.addEventListener("click", () => openOverlay(index));
+  });
+});
+
+</script>
+  </body>
+</html>
